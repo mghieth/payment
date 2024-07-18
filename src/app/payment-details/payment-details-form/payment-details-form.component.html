@@ -1,0 +1,28 @@
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="off">
+    <input type="hidden" name="Id" [value]="service.formData.Id"/>
+    <div class="mb-3">
+        <label>Student Name</label>
+        <input class="form-control form-control-lg" placeholder="Name"
+        #StudentName="ngModel" name="StudentName"
+        [(ngModel)]="service.formData.StudentName" required>
+    </div>
+    <div class="row">
+        <div class="mb-3">
+            <label>Birithday</label>
+            <input class="form-control form-control-lg" placeholder="YYYY-MM-DD"
+            #Birthday="ngModel" name="Birthday"
+            [(ngModel)]="service.formData.Birthday" required>
+        </div>
+        <div class="mb-3">
+            <label>Book Name</label>
+            <input class="form-control form-control-lg" placeholder="BookName"
+            #BookName="ngModel" name="BookName"
+            [(ngModel)]="service.formData.BookName">
+        </div>
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">
+           Submit 
+        </button>
+    </div>
+</form>

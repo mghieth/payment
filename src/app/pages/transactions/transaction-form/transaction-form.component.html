@@ -1,0 +1,34 @@
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
+    <input type="hidden" name="Id" [value]="service.formData.Id"/>
+    <div class="mb-3">
+        <label>Amount</label>
+        <input class="form-control form-control-lg" placeholder="Amount"
+        #Amount="ngModel" name="Amount"
+        [(ngModel)]="service.formData.Amount" required>
+    </div>
+    <div class="row">
+        <div class="mb-3">
+            <label>Date</label>
+            <input class="form-control form-control-lg" placeholder="YYYY-MM-DD"
+            #Date="ngModel" name="date"
+            [(ngModel)]="service.formData.Date" required>
+        </div>
+        <div class="mb-3">
+            <label>Description</label>
+            <input class="form-control form-control-lg" placeholder="Description"
+            #Description="ngModel" name="Description"
+            [(ngModel)]="service.formData.Description">
+        </div>
+        <div class="mb-3">
+            <label>Category</label>
+            <input class="form-control form-control-lg" placeholder="Category"
+            #Category="ngModel" name="Category"
+            [(ngModel)]="service.formData.Category">
+        </div>
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">
+           Submit 
+        </button>
+    </div>
+</form>

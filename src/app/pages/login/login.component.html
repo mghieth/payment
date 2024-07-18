@@ -1,0 +1,24 @@
+<div class="login-page">
+    <div class="form">
+      <div  *ngIf="!isLoginFormVisible" id="register-form">
+      <form class="register-form" #form="ngForm"  [class.submitted]="formSubmitted" novalidate>
+        <input type="text"  #userName="ngModel"  name="name" [(ngModel)]="newUser.Name" placeholder="name" required/>
+        <input type="password"  #password="ngModel"  name="password" [(ngModel)]="newUser.Password" placeholder="password" required/>
+        <input type="email"  #email="ngModel"  name="email" [(ngModel)]="newUser.Email" placeholder="email address" required/>
+        <input type="date"name="birthdate" [(ngModel)]="newUser.Birthday" placeholder="YYYY-MM-DD"/>
+        <input type="text"name="phone" [(ngModel)]="newUser.PhoneNumber" placeholder="phone number"/>
+        <input type="text"name="address" [(ngModel)]="newUser.Address" placeholder="address"/>
+        <button (click)="onRegister(form)">create</button>
+        <p class="message mouse-hover">Already registered? <a (click)="toggleForms()">Sign In</a></p>
+      </form>
+    </div>
+      <div *ngIf="isLoginFormVisible" id="login-form">
+      <form class="login-form">
+        <input type="email" name="Email" [(ngModel)]="loginObj.Email" placeholder="Email address"/>
+        <input type="password" name="password" [(ngModel)]="loginObj.Password" placeholder="password"/>
+        <button (click)="onLogin()">login</button>
+        <p class="message mouse-hover">Not registered? <a  (click)="toggleForms()">Create an account</a></p>
+      </form>
+    </div>
+    </div>
+  </div>
