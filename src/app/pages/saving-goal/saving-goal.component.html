@@ -1,1 +1,44 @@
-<p>saving-goal works!</p>
+<div class="bg-body-secondary text-center py-5 rounded-2">
+    <h1 class="dispay-6 fw-bold">
+       Saving Goals
+    </h1>
+    </div>
+    <div class="row mt-5">
+        <div class="card mb-10">
+            <div class="card-header">
+              My Goals
+            </div>
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr   >
+                    <th scope="col">Goal Name</th>
+                    <th scope="col">Target Amount</th>
+                    <th scope="col">Current Amount</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Achive</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
+                    <td>{{pd.GoalName}}</td>
+                    <td>{{pd.TargetAmount}}</td>
+                    <td>{{pd.CurrentAmount}}</td>
+                    <td>{{pd.Deadline}}</td>
+                    <td>
+                      <div class="card mb-100">
+                      <p-progressBar [value]="(pd.TargetAmount/pd.CurrentAmount)*100" />
+
+                    </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      
+          <div class="col-4">
+            <app-saving-goal-form></app-saving-goal-form>
+          </div>
+         </div>
+      

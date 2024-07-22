@@ -1,12 +1,35 @@
-import { Component } from '@angular/core';
+import { Component,OnInit,inject } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import {HttpClient} from "@angular/common/http";
+import{NgFor} from '@angular/common';
+import { SavingGoalFormComponent } from './saving-goal-form/saving-goal-form.component';
+import { SavingGoalService } from '../../services/savingGoal/saving-goal.service';
+import { SavingGoal } from '../../Models/saving-goal.model';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-saving-goal',
   standalone: true,
-  imports: [],
+  imports: [SavingGoalFormComponent,NgFor,ProgressBarModule,ToastModule],
   templateUrl: './saving-goal.component.html',
   styleUrl: './saving-goal.component.css'
 })
-export class SavingGoalComponent {
 
+export class SavingGoalComponent implements OnInit{
+  toastr= inject(ToastrService)
+  http= inject(HttpClient)
+  service=inject(SavingGoalService)
+ 
+
+  ngOnInit():void{
+    this.service.refreshList();
+  }
+
+  populateForm(selectedRecord: SavingGoal){
+    this.service.formData = Object.assign({},selectedRecord) 
+  }
 }
+
+

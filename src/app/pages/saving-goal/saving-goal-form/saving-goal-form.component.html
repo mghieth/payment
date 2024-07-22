@@ -1,1 +1,35 @@
-<p>saving-goal-form works!</p>
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
+    <input type="hidden" name="Id" [value]="service.formData.Id"/>
+    <div class="mb-3">
+        <label>Goal Name</label>
+        <input class="form-control form-control-lg" placeholder="ex: buy car"
+        #Amount="ngModel" name="Amount"
+        [(ngModel)]="service.formData.GoalName" required>
+    </div>
+    <div class="row">
+        <div class="mb-3">
+            <label>Target Amount</label>
+            <input class="form-control form-control-lg" placeholder="10000$"
+            #TargetAmount="ngModel" name="TargetAmount"
+            [(ngModel)]="service.formData.TargetAmount" required>
+        </div>
+        <div class="mb-3">
+            <label>Current Amount</label>
+            <input class="form-control form-control-lg" placeholder="10000$"
+            #CurrentAmount="ngModel" name="CurrentAmount"
+            [(ngModel)]="service.formData.CurrentAmount" required>
+        </div>
+        <div class="mb-3">
+            <label>Deadline</label>
+            <input class="form-control form-control-lg" placeholder="YYYY-MM-DD"
+            #Deadline="ngModel" name="Deadline"
+            [(ngModel)]="service.formData.Deadline" required>
+        </div>
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">
+           Submit 
+        </button>
+    </div>
+</form>
+

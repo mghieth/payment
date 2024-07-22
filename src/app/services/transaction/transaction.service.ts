@@ -11,13 +11,14 @@ import { NgForm } from '@angular/forms';
 export class TransactionService {
 
   userService=inject(UserService)
+  http=inject(HttpClient)
   url:string = environment.apiBaseUrl + '/Transaction'
   list:Transaction[]=[]
   formData:Transaction = new Transaction()
   formSubmitted:boolean = false;
   userId:any= localStorage.getItem("UserId")
 
-  http=inject(HttpClient)
+  
   
   refreshList(){
     debugger;
