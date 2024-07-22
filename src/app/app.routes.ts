@@ -4,6 +4,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './gurd/auth.guard';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { BudgetComponent } from './pages/budget/budget.component';
 
 export const routes: Routes = [
     {
@@ -27,6 +28,11 @@ export const routes: Routes = [
             {
                 path:'transaction',
                 component:TransactionsComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path:'budget',
+                component:BudgetComponent,
                 canActivate:[authGuard]
             }
         ]

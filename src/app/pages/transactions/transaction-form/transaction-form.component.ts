@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { TransactionService } from '../../../services/transaction/transaction.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';

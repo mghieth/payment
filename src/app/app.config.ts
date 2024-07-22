@@ -6,6 +6,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { customeInterceptor } from './services/custome.interceptor';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
      provideRouter(routes),provideHttpClient(withInterceptors([customeInterceptor])), provideRouter(routes), provideAnimations(), provideToastr()]

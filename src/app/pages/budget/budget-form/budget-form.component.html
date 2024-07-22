@@ -1,0 +1,34 @@
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
+  <input type="hidden" name="Id" [value]="service.formData.Id" />
+  <div class="mb-3">
+    <label>Month</label>
+    <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Amount="ngModel" name="Month"
+      [(ngModel)]="service.formData.Month" required>
+  </div>
+  <div class="row">
+    <div class="mb-3">
+      <label>Total Budget</label>
+      <input class="form-control form-control-lg" placeholder="1000000$" #Date="ngModel" name="TotalBudget"
+        [(ngModel)]="service.formData.TotalBudget" required>
+    </div>
+
+    <div  *ngFor="let pd of service.dictionary| keyvalue" >
+      <div class="mb-3">
+        <label for="newKey">Category</label>
+        <input type="text" class="form-control form-control-lg" #newKey="ngModel" [(ngModel)]="pd.key" name="newKey">
+      </div>
+      <div class="mb-3">
+        <label for="newValue">Amount</label>
+        <input type="text" class="form-control form-control-lg" #newValue="ngModel" [(ngModel)]="pd.value"
+          name="newValue">
+      </div>
+      <span class="text-secondary"><a class="fa-solid flex-grow-1 mouse-hover" (click)="addAllocation(form)"> Add more</a></span>
+    </div>
+
+  </div>
+  <div class="d-grid">
+    <button class="btn btn-lg btn-success" type="submit">
+      Submit
+    </button>
+  </div>
+</form>

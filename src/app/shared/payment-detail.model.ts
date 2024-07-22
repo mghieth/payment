@@ -3,5 +3,5 @@ export class PaymentDetail {
     StudentName: string=""
     Birthday: Date | undefined
     BookName:string=""
-    Courses:[]=[]
+    Courses:string[]=[]
 }

@@ -1,0 +1,31 @@
+import { Component, inject, OnInit } from '@angular/core';
+import { BudgetFormComponent } from './budget-form/budget-form.component';
+import { NgFor,KeyValuePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
+import { BudgetService } from '../../services/budget/budget.service';
+import { Budget } from '../../Models/budget.model';
+
+@Component({
+  selector: 'app-budget',
+  standalone: true,
+  imports: [BudgetFormComponent,NgFor,KeyValuePipe],
+  templateUrl: './budget.component.html',
+  styleUrl: './budget.component.css'
+})
+export class BudgetComponent implements OnInit {
+  toastr= inject(ToastrService)
+  http= inject(HttpClient)
+  service=inject(BudgetService)
+
+
+  ngOnInit():void{
+    this.service.refreshList();
+  }
+
+  populateForm(selectedRecord: Budget){
+    this.service.formData = Object.assign({},selectedRecord) 
+    this.service.dictionary=this.service.formData.AllocatedAmounts
+  }
+
+}
