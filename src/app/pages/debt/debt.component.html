@@ -26,6 +26,8 @@
               <td>{{pd.InterestRate}}</td>
               <td>{{pd.RemainingAmount}}</td>
               <td>{{pd.DueDate}}</td>
+              <td><span class="text-secondary">
+                <i class="fa-solid fa-trash-can fa-lg mouse-hover" (click)="onDelete(pd.Id)">Delete </i></span></td>
             </tr>
           </tbody>
         </table>

@@ -28,13 +28,13 @@ export class TransactionsComponent implements OnInit{
   }
 
   onDelete(id:string){
-    if(confirm('Are you sure to delete this student')){
+    if(confirm('Are you sure to delete this transaction')){
       this.service.deleteTransaction(id)
       .subscribe({
         next:
         (res:any) => {
           this.service.list = res as Transaction[]
-          this.toastr.error('Deleted successfully', 'Student')
+          this.toastr.error('Deleted successfully', 'Transaction')
         },
         error: (err:any) => {console.log(err)}
       })

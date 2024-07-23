@@ -39,6 +39,9 @@ export class InvestmentService {
       return this.http.put(this.url+'/'+this.formData.Id,this.formData)
     }
 
+    deleteInvestment(id:string){
+      return this.http.delete(this.url+'/'+id+'?userId='+this.userId)
+    }
 
     resetForm(form:NgForm){
       form.form.reset()

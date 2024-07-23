@@ -16,6 +16,7 @@
             <th scope="col">Amount Invested</th>
             <th scope="col">Current Value</th>
             <th scope="col">Date Of Investment</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -24,6 +25,8 @@
             <td>{{pd.AmountInvested}}</td>
             <td>{{pd.CurrentValue}}</td>
             <td>{{pd.DateOfInvestment}}</td>
+            <td><span class="text-secondary">
+              <i class="fa-solid fa-trash-can fa-lg mouse-hover" (click)="onDelete(pd.Id)">Delete </i></span></td>
           </tr>
         </tbody>
       </table>

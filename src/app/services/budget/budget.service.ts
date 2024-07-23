@@ -44,6 +44,9 @@ export class BudgetService {
       return this.http.put(this.url+'/'+this.formData.Id,this.formData)
     }
    
+    deleteBudget(id:string){
+      return this.http.delete(this.url+'/'+id+'?userId='+this.userId)
+    }
     resetForm(form:NgForm){
       form.form.reset()
       this.formData= new Budget()

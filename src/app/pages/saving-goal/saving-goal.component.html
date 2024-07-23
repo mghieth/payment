@@ -17,6 +17,7 @@
                     <th scope="col">Current Amount</th>
                     <th scope="col">Deadline</th>
                     <th scope="col">Achive</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,8 @@
 
                     </div>
                     </td>
+                    <td><span class="text-secondary">
+                      <i class="fa-solid fa-trash-can fa-lg mouse-hover" (click)="onDelete(pd.Id)">Delete </i></span></td>
                   </tr>
                 </tbody>
               </table>

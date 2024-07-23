@@ -26,4 +26,20 @@ export class DebtComponent implements OnInit{
   populateForm(selectedRecord: Debt){
     this.service.formData = Object.assign({},selectedRecord) 
   }
+
+  onDelete(id:string){
+    if(confirm('Are you sure to delete this debt')){
+      this.service.deleteDebt(id)
+      .subscribe({
+        next:
+        (res:any) => {
+          this.service.list = res as Debt[]
+          this.toastr.error('Deleted successfully', 'Debt')
+        },
+        error: (err:any) => {console.log(err)}
+      })
+    }
+   
+  }
+
 }

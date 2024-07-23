@@ -28,4 +28,19 @@ export class BudgetComponent implements OnInit {
     this.service.dictionary=this.service.formData.AllocatedAmounts
   }
 
+  onDelete(id:string){
+    if(confirm('Are you sure to delete this budget')){
+      this.service.deleteBudget(id)
+      .subscribe({
+        next:
+        (res:any) => {
+          this.service.list = res as Budget[]
+          this.toastr.error('Deleted successfully', 'Budget')
+        },
+        error: (err:any) => {console.log(err)}
+      })
+    }
+   
+  }
+
 }

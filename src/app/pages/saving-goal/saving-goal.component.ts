@@ -30,6 +30,23 @@ export class SavingGoalComponent implements OnInit{
   populateForm(selectedRecord: SavingGoal){
     this.service.formData = Object.assign({},selectedRecord) 
   }
+
+  
+  onDelete(id:string){
+    if(confirm('Are you sure to delete this goal')){
+      this.service.deleteSavingGoal(id)
+      .subscribe({
+        next:
+        (res:any) => {
+          this.service.list = res as SavingGoal[]
+          this.toastr.error('Deleted successfully', 'Goal')
+        },
+        error: (err:any) => {console.log(err)}
+      })
+    }
+   
+  }
+
 }
 
 

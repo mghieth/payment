@@ -25,4 +25,19 @@ export class InvestmentComponent implements OnInit{
   populateForm(selectedRecord: Investment){
     this.service.formData = Object.assign({},selectedRecord) 
   }
+
+  onDelete(id:string){
+    if(confirm('Are you sure to delete this investment')){
+      this.service.deleteInvestment(id)
+      .subscribe({
+        next:
+        (res:any) => {
+          this.service.list = res as Investment[]
+          this.toastr.error('Deleted successfully', 'Investment')
+        },
+        error: (err:any) => {console.log(err)}
+      })
+    }
+   
+  }
 }
