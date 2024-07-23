@@ -32,7 +32,7 @@ export class BudgetFormComponent {
   }
 
   insertRecord(form:NgForm){
-    this.service.postTransaction(form.value.newKey, form.value.newValue)
+    this.service.postBudget(form.value.newKey, form.value.newValue)
     .subscribe({
       next:(res:any) => {
         this.service.list = res as  Budget[]
@@ -44,7 +44,7 @@ export class BudgetFormComponent {
   }
 
   updateRecord(form:NgForm){
-    this.service.putTransaction(form.value.newKey, form.value.newValue)
+    this.service.putBudget(form.value.newKey, form.value.newValue)
     .subscribe({
       next:(res:any) => {
         this.service.list = res as  Budget[]

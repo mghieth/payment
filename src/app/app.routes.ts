@@ -6,6 +6,8 @@ import { authGuard } from './gurd/auth.guard';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { BudgetComponent } from './pages/budget/budget.component';
 import { SavingGoalComponent } from './pages/saving-goal/saving-goal.component';
+import { InvestmentComponent } from './pages/investment/investment.component';
+import { DebtComponent } from './pages/debt/debt.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +41,16 @@ export const routes: Routes = [
             {
                 path:'goal',
                 component:SavingGoalComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path:'investment',
+                component:InvestmentComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path:'debt',
+                component:DebtComponent,
                 canActivate:[authGuard]
             }
         ]

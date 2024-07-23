@@ -29,12 +29,12 @@ export class SavingGoalService {
       })
   }
 
-  postTransaction(){
+  postSavingGoal(){
     this.formData.UserId=this.userId
     return this.http.post(this.url,this.formData)
   }
 
-  putTransaction(){
+  putSavingGoal(){
     this.formData.UserId=this.userId
     return this.http.put(this.url+'/'+this.formData.Id,this.formData)
   }

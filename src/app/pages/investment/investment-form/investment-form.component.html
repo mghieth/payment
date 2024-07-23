@@ -1,0 +1,34 @@
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
+    <input type="hidden" name="Id" [value]="service.formData.Id"/>
+    <div class="mb-3">
+        <label>Investment Type</label>
+        <input class="form-control form-control-lg" placeholder="e.g., stocks, bonds"
+        #InvestmentType="ngModel" name="InvestmentType"
+        [(ngModel)]="service.formData.InvestmentType" required>
+    </div>
+    <div class="row">
+        <div class="mb-3">
+            <label>Amount Invested</label>
+            <input class="form-control form-control-lg" placeholder="10000$"
+            #AmountInvested="ngModel" name="AmountInvested"
+            [(ngModel)]="service.formData.AmountInvested" required>
+        </div>
+        <div class="mb-3">
+            <label>Current Value</label>
+            <input class="form-control form-control-lg" placeholder="10000$"
+            #CurrentValue="ngModel" name="CurrentValue"
+            [(ngModel)]="service.formData.CurrentValue">
+        </div>
+        <div class="mb-3">
+            <label>Date Of Investment</label>
+            <input class="form-control form-control-lg" placeholder="YYYY-MM-DD"
+            #DateOfInvestment="ngModel" name="DateOfInvestment"
+            [(ngModel)]="service.formData.DateOfInvestment">
+        </div>
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">
+           Submit 
+        </button>
+    </div>
+</form>

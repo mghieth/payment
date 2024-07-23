@@ -2,18 +2,19 @@ import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
-import { SavingGoalService } from '../../../services/savingGoal/saving-goal.service';
-import { SavingGoal } from '../../../Models/saving-goal.model';
+import { InvestmentService } from '../../../services/investment/investment.service';
+import { Investment } from '../../../Models/investment.model';
+
 
 @Component({
-  selector: 'app-saving-goal-form',
+  selector: 'app-investment-form',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './saving-goal-form.component.html',
-  styleUrl: './saving-goal-form.component.css'
+  templateUrl: './investment-form.component.html',
+  styleUrl: './investment-form.component.css'
 })
-export class SavingGoalFormComponent {
-  constructor(public service: SavingGoalService,private toastr: ToastrService){
+export class InvestmentFormComponent {
+  constructor(public service: InvestmentService,private toastr: ToastrService){
 
   }
 
@@ -22,32 +23,34 @@ export class SavingGoalFormComponent {
     if(form.valid){
     if(this.service.formData.Id=="")
       this.insertRecord(form)
-    else this.updateRecord(form)}
+
+    else this.updateRecord(form)
+    }
+    
   }
-  
+
   insertRecord(form:NgForm){
-    this.service.postSavingGoal()
+    this.service.postInvestment()
     .subscribe({
       next:(res:any) => {
         debugger;
-        this.service.list = res as  SavingGoal[]
+        this.service.list = res as  Investment[]
         this.service.resetForm(form)
-        this.toastr.success('Inserted successfully', 'SavingGoal')
+        this.toastr.success('Inserted successfully', 'Investment')
       },
       error:(err: any) => {console.log(err)}
     })
   }
 
   updateRecord(form:NgForm){
-    this.service.putSavingGoal()
+    this.service.putInvestment()
     .subscribe({
       next:(res:any) => {
-        this.service.list = res as  SavingGoal[]
+        this.service.list = res as  Investment[]
         this.service.resetForm(form)
-        this.toastr.info('Updated successfully', 'SavingGoal')
+        this.toastr.info('Updated successfully', 'Investment')
       },
       error:(err: any) => {console.log(err)}
     })
   }
-
 }

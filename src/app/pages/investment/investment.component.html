@@ -1,0 +1,36 @@
+<div class="bg-body-secondary text-center py-5 rounded-2">
+  <h1 class="dispay-6 fw-bold">
+    Investments
+  </h1>
+</div>
+<div class="row mt-5">
+  <div class="card mb-4">
+    <div class="card-header">
+      My investments
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Investment Type</th>
+            <th scope="col">Amount Invested</th>
+            <th scope="col">Current Value</th>
+            <th scope="col">Date Of Investment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
+            <td>{{pd.InvestmentType}}</td>
+            <td>{{pd.AmountInvested}}</td>
+            <td>{{pd.CurrentValue}}</td>
+            <td>{{pd.DateOfInvestment}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <app-investment-form></app-investment-form>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
+    <input type="hidden" name="Id" [value]="service.formData.Id"/>
+    <div class="mb-3">
+        <label>Debt Type</label>
+        <input class="form-control form-control-lg" placeholder="e.g., loan, credit card"
+        #DebtType="ngModel" name="DebtType"
+        [(ngModel)]="service.formData.DebtType" required>
+    </div>
+    <div class="row">
+        <div class="mb-3">
+            <label>Principal Amount</label>
+            <input class="form-control form-control-lg" placeholder="10000$"
+            #PrincipalAmount="ngModel" name="PrincipalAmount"
+            [(ngModel)]="service.formData.PrincipalAmount" required>
+        </div>
+        <div class="mb-3">
+            <label>Interest Rate</label>
+            <input class="form-control form-control-lg" placeholder="0.02"
+            #InterestRate="ngModel" name="InterestRate"
+            [(ngModel)]="service.formData.InterestRate">
+        </div>
+        <div class="mb-3">
+            <label>Remaining Amount</label>
+            <input class="form-control form-control-lg" placeholder="500$"
+            #RemainingAmount="ngModel" name="RemainingAmount"
+            [(ngModel)]="service.formData.RemainingAmount">
+        </div>
+        <div class="mb-3">
+            <label>Due Date</label>
+            <input class="form-control form-control-lg" placeholder="YYYY-MM-DD"
+            #DueDate="ngModel" name="DueDate"
+            [(ngModel)]="service.formData.DueDate">
+        </div>
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">
+           Submit 
+        </button>
+    </div>
+</form>
+
