@@ -8,6 +8,7 @@ import { BudgetComponent } from './pages/budget/budget.component';
 import { SavingGoalComponent } from './pages/saving-goal/saving-goal.component';
 import { InvestmentComponent } from './pages/investment/investment.component';
 import { DebtComponent } from './pages/debt/debt.component';
+import { UserRegisterFormComponent } from './pages/register/user-register-form.component';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,10 @@ export const routes: Routes = [
     {
         path:'login',
         component:LoginComponent
+    },
+    {
+        path:'register',
+        component:UserRegisterFormComponent
     },
     {
         path:'',

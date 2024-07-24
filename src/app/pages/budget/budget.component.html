@@ -24,13 +24,14 @@
                     <td>{{pd.TotalBudget}}</td>              
                     <td *ngFor="let item of pd.AllocatedAmounts | keyvalue">
                       <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-start mb-2 border px-2 py-3 rounded-3">
+                        <li class="list-group-item">
                       Category: {{ item.key }}, Amounts: {{ item.value }}
                     </li>
                     </ul>
                     </td>
                     <td><span class="text-secondary">
-                      <i class="fa-solid fa-trash-can fa-lg mouse-hover" (click)="onDelete(pd.Id)">Delete </i></span></td>
+                      <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
+                    </span></td>
                   </tr>
                 </tbody>
               </table>
