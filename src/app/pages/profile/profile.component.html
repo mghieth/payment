@@ -1,0 +1,47 @@
+<form #form="ngForm" (submit)="onSubmit(form)"  novalidate autocomplete="on">
+    <input type="hidden" name="Id" [value]="service.newUser.Id"/>
+    <div class="mb-3">
+        <label>Name</label>
+        <input class="form-control form-control-lg" placeholder="Name"
+        #Name="ngModel" name="Name"
+        [(ngModel)]="service.newUser.Name" required>
+    </div>
+    <div class="row">
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" class="form-control form-control-lg" placeholder="Password"
+            #Password="ngModel" name="Password"
+            [(ngModel)]="service.newUser.Password">
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input class="form-control form-control-lg" placeholder="Email"
+            #Email="ngModel" name="Email"
+            [(ngModel)]="service.newUser.Email">
+        </div>
+        <div class="mb-3">
+            <label>Birthday</label>
+            <input  class="form-control form-control-lg" placeholder="YYYY-MM-DD"
+            #Birthday="ngModel" name="Birthday"
+            [(ngModel)]="service.newUser.DateOfBirth" >
+        </div>
+        <div class="mb-3">
+            <label>PhoneNumber</label>
+            <input class="form-control form-control-lg" placeholder="PhoneNumber"
+            #PhoneNumber="ngModel" name="PhoneNumber"
+            [(ngModel)]="service.newUser.PhoneNumber">
+        </div>
+        <div class="mb-3">
+            <label>Address</label>
+            <input class="form-control form-control-lg" placeholder="Address"
+            #Address="ngModel" name="Address"
+            [(ngModel)]="service.newUser.Address">
+        </div>
+        
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">
+           Update 
+        </button>
+    </div>
+</form>

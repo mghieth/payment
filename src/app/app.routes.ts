@@ -9,6 +9,7 @@ import { SavingGoalComponent } from './pages/saving-goal/saving-goal.component';
 import { InvestmentComponent } from './pages/investment/investment.component';
 import { DebtComponent } from './pages/debt/debt.component';
 import { UserRegisterFormComponent } from './pages/register/user-register-form.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -56,6 +57,11 @@ export const routes: Routes = [
             {
                 path:'debt',
                 component:DebtComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path:'profile',
+                component:ProfileComponent,
                 canActivate:[authGuard]
             }
         ]

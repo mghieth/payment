@@ -3,7 +3,7 @@ export class User {
     Name: string=""
     Email:string=""
     Password: string = ""
-    Birthday: Date | undefined
+    DateOfBirth: Date | undefined
     PhoneNumber: string =""
     Address: string =""
 }

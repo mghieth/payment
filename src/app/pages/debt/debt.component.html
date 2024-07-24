@@ -27,7 +27,8 @@
               <td>{{pd.RemainingAmount}}</td>
               <td>{{pd.DueDate}}</td>
               <td><span class="text-secondary">
-                <i class="fa-solid fa-trash-can fa-lg mouse-hover" (click)="onDelete(pd.Id)">Delete </i></span></td>
+                <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
+              </span></td>
             </tr>
           </tbody>
         </table>

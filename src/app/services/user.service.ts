@@ -17,16 +17,18 @@ export class UserService {
   router = inject(Router);
   http=inject(HttpClient);
   newUser : User = new User()
-  userId:string=""
+  userId:any = localStorage.getItem("UserId")
 
   url:string = environment.apiBaseUrl + '/User'
   loginObj:any = {
     "Email":"",
     "Password":""
   }
+
 getUserId(){
   this.userId
 }
+
   onLogin(){
     debugger;
     this.http.post(this.url+'/login',this.loginObj)
@@ -58,5 +60,27 @@ getUserId(){
       })
     }
     
+  }
+
+
+  getUser(){
+    debugger;
+         this.http.get(this.url+'?id='+this.userId)
+      .subscribe({
+        next: (res: any)=>{
+         this.newUser= res as User
+        },
+        error : (err: any)=>{console.log(err)}
+      })
+  }
+
+  UpdateUser(){
+    debugger
+   return this.http.put(this.url+'/'+this.userId,this.newUser)
+  }
+  
+  resetForm(form:NgForm){
+    form.form.reset()
+    this.newUser= new User()
   }
 }
