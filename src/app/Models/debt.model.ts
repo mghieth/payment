@@ -2,8 +2,8 @@ export class Debt {
     Id: string = ""
     UserId: string = ""
     DebtType: string = ""
-    PrincipalAmount: number = 0
-    InterestRate : number = 0
-    RemainingAmount : number = 0
+    PrincipalAmount: number | undefined
+    InterestRate : number  | undefined
+    RemainingAmount : number  | undefined
     DueDate: Date | undefined
 }

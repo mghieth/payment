@@ -1,3 +1,4 @@
+import { provideToastr } from 'ngx-toastr';
 import { UserService } from './../user.service';
 import { Injectable,inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
@@ -17,6 +18,8 @@ export class TransactionService {
   formData:Transaction = new Transaction()
   formSubmitted:boolean = false;
   userId:any= localStorage.getItem("UserId")
+  totalexpens:number=0
+  totalIncome:number=0
 
   
   
@@ -30,6 +33,27 @@ export class TransactionService {
         error : (err: any)=>{console.log(err)}
       })
   }
+
+getIncomeExpense(){
+  debugger
+  this.http.get(this.url+'?userId='+this.userId)
+      .subscribe({
+        next: (res: any)=>{
+         this.list= res as Transaction[]
+         this.list.forEach(element => {
+          if(element.Category=="income"){
+            this.totalIncome= this.totalIncome + element.Amount 
+          }
+          if(element.Category=="expense"){
+            this.totalexpens=this.totalexpens + element.Amount
+          }
+        });
+        },
+        error : (err: any)=>{console.log(err)}
+      })
+}
+
+
   
     postTransaction(){
       this.formData.UserId=this.userId

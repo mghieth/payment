@@ -2,7 +2,7 @@ export class Budget {
 
     Id: string =""
     UserId: string=""
-    TotalBudget:number=0
+    TotalBudget:number | undefined
     Month: Date | undefined
     AllocatedAmounts: {[key:string]:any;} = {}
 }

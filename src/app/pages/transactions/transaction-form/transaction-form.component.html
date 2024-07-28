@@ -2,7 +2,7 @@
     <input type="hidden" name="Id" [value]="service.formData.Id"/>
     <div class="mb-3">
         <label>Amount</label>
-        <input class="form-control form-control-lg" placeholder="Amount"
+        <input class="form-control form-control-lg" placeholder="100$"
         #Amount="ngModel" name="Amount"
         [(ngModel)]="service.formData.Amount" required>
     </div>
@@ -21,9 +21,11 @@
         </div>
         <div class="mb-3">
             <label>Category</label>
-            <input class="form-control form-control-lg" placeholder="Category"
-            #Category="ngModel" name="Category"
-            [(ngModel)]="service.formData.Category">
+            <select id="inputCategory" class="form-control form-control-lg" #Category="ngModel" name="Category"
+            [(ngModel)]="service.formData.Category" required>
+                <option value="income" selected>Income</option>
+                <option value="expense">Expense</option>
+              </select>     
         </div>
     </div>
     <div class="d-grid">
