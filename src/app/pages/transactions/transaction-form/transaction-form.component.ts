@@ -3,12 +3,14 @@ import { TransactionService } from '../../../services/transaction/transaction.se
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
-import { Transaction } from '../../../Models/transaction.model';
+import { Category, Transaction } from '../../../Models/transaction.model';
+import { NgFor, NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-transaction-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,NgFor,NgIf],
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.css'
 })
@@ -17,8 +19,19 @@ export class TransactionFormComponent {
   constructor(public service: TransactionService,private toastr: ToastrService){
 
   }
+
+Categories: Category[] = [{Id:1,Name:"Food"},{Id:2,Name:"Fun"}]
+Cateegory = new Category();
+
+
+toggleForms() {
+  debugger;
+  this.service.isIncome = !this.service.isIncome;
+}
+
   onSubmit(form:NgForm){
     this.service.formSubmitted = true
+    this.service.isIncome = true
     if(form.valid){
     if(this.service.formData.Id=="")
       this.insertRecord(form)
@@ -29,6 +42,7 @@ export class TransactionFormComponent {
   }
 
   insertRecord(form:NgForm){
+    debugger;
     this.service.postTransaction()
     .subscribe({
       next:(res:any) => {

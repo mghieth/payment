@@ -1,36 +1,58 @@
 <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
-    <input type="hidden" name="Id" [value]="service.formData.Id"/>
+  <input type="hidden" name="Id" [value]="service.formData.Id" />
+  <div class="row">
+    <label>Type</label>
+    <label class="container">Income
+      <input type="radio" value="Income" checked="checked" (change)="toggleForms()" #Type="ngModel" name="Type"
+      [(ngModel)]="service.formData.Type">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Expense
+      <input type="radio" value="Expense" #Type="ngModel" (change)="toggleForms()" name="Type"
+      [(ngModel)]="service.formData.Type">
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  <div *ngIf="!service.isIncome"  class="mb-3">
+    <label>Category</label>
+    <select id="inputCategory" class="form-control form-control-lg" #Category="ngModel" name="Category"
+      [(ngModel)]="service.formData.Category.Name" required>
+      <option *ngFor="let Category of Categories" [ngValue]="Category.Name">{{Category.Name}}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Amount</label>
+    <input class="form-control form-control-lg" placeholder="100$" #Amount="ngModel" name="Amount"
+      [(ngModel)]="service.formData.Amount" required>
+  </div>
+  <div class="row">
     <div class="mb-3">
-        <label>Amount</label>
-        <input class="form-control form-control-lg" placeholder="100$"
-        #Amount="ngModel" name="Amount"
-        [(ngModel)]="service.formData.Amount" required>
+      <label>Date</label>
+      <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Date="ngModel" name="date"
+        [(ngModel)]="service.formData.Date" required>
     </div>
-    <div class="row">
-        <div class="mb-3">
-            <label>Date</label>
-            <input class="form-control form-control-lg" placeholder="YYYY-MM-DD"
-            #Date="ngModel" name="date"
-            [(ngModel)]="service.formData.Date" required>
-        </div>
-        <div class="mb-3">
-            <label>Description</label>
-            <input class="form-control form-control-lg" placeholder="Description"
-            #Description="ngModel" name="Description"
-            [(ngModel)]="service.formData.Description">
-        </div>
-        <div class="mb-3">
-            <label>Category</label>
-            <select id="inputCategory" class="form-control form-control-lg" #Category="ngModel" name="Category"
-            [(ngModel)]="service.formData.Category" required>
-                <option value="income" selected>Income</option>
-                <option value="expense">Expense</option>
-              </select>     
-        </div>
+    <div *ngIf="!service.isIncome" id="paymentMethod" class="mb-3">
+        <label>Payment Method</label>
+        <select id="inputCategory" class="form-control form-control-lg" #PaymentMethod="ngModel" name="PaymentMethod"
+          [(ngModel)]="service.formData.PaymentMethod" required>
+          <option value="cash" selected>Cash</option>
+          <option value="cheque">Cheque</option>
+        </select>
+      </div>
+      <div *ngIf="service.isIncome" class="mb-3">
+        <label>Source</label>
+        <input class="form-control form-control-lg" placeholder="Salary.." #Source="ngModel" name="Source"
+          [(ngModel)]="service.formData.Source">
+      </div>
+    <div class="mb-3">
+      <label>Description</label>
+      <input class="form-control form-control-lg" placeholder="Description" #Description="ngModel" name="Description"
+        [(ngModel)]="service.formData.Description">
     </div>
-    <div class="d-grid">
-        <button class="btn btn-lg btn-success" type="submit">
-           Submit 
-        </button>
-    </div>
+  </div>
+  <div class="d-grid">
+    <button class="btn btn-lg btn-success" type="submit">
+      Submit
+    </button>
+  </div>
 </form>

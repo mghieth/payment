@@ -5,6 +5,14 @@ export class Transaction {
     Amount:number =0
     Date: Date | undefined
     Description: string = ""
-    Category: string =""
+    Category: Category | Category = new Category
+    PaymentMethod: string =""
+    Source: string=""
+    Type: string=""
 
 }
+
+export class Category{
+    Id:number =0
+    Name:string=""
+  }

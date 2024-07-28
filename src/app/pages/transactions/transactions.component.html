@@ -34,20 +34,26 @@
       <div class="card-body">
         <table class="table table-hover">
           <thead>
-            <tr   >
-              <th scope="col">Date</th>
-              <th scope="col">Description</th>
+            <tr>
+              <th scope="col">Type</th>
               <th scope="col">Amount</th>
               <th scope="col">Category</th>
+              <th scope="col">Date</th>
+              <th scope="col">PaymentMethod</th>
+              <th scope="col">Source</th>
+              <th scope="col">Description</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
-              <td>{{pd.Date}}</td>
-              <td>{{pd.Description}}</td>
+              <td>{{pd.Type}}</td>
               <td>{{pd.Amount}}</td>
-              <td>{{pd.Category}}</td>
+              <td>{{pd.Category.Name}}</td>
+              <td>{{pd.Date}}</td>
+              <td>{{pd.PaymentMethod}}</td>
+              <td>{{pd.Source}}</td>
+              <td>{{pd.Description}}</td>
               <td><span class="text-secondary">
                 <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
               </span></td>
