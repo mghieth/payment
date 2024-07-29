@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CategoryService } from './../../../services/category/category.service';
+import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../../../services/transaction/transaction.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
@@ -14,14 +15,20 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.css'
 })
-export class TransactionFormComponent {
+export class TransactionFormComponent implements OnInit {
  
-  constructor(public service: TransactionService,private toastr: ToastrService){
+  constructor(public service: TransactionService,private toastr: ToastrService,public categoryService: CategoryService){
 
   }
 
-Categories: Category[] = [{Id:1,Name:"Food"},{Id:2,Name:"Fun"}]
-Cateegory = new Category();
+  //Categories: Category[] = [{Id:"1",UserId:"7",Name:"Food"},{Id:"2",UserId:"7",Name:"Fun"}]
+  Cateegory = new Category();
+
+  ngOnInit(): void {
+    this.categoryService.getCategories()
+  }
+
+
 
 
 toggleForms() {

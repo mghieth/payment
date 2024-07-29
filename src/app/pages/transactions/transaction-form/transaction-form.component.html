@@ -1,23 +1,28 @@
 <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
   <input type="hidden" name="Id" [value]="service.formData.Id" />
   <div class="row">
-    <label>Type</label>
-    <label class="container">Income
-      <input type="radio" value="Income" checked="checked" (change)="toggleForms()" #Type="ngModel" name="Type"
-      [(ngModel)]="service.formData.Type">
-      <span class="checkmark"></span>
-    </label>
-    <label class="container">Expense
-      <input type="radio" value="Expense" #Type="ngModel" (change)="toggleForms()" name="Type"
-      [(ngModel)]="service.formData.Type">
-      <span class="checkmark"></span>
-    </label>
+    <div class="col">
+      <label>Type</label>
+    </div>
+    <div class="col">
+      <label class="container">Income
+        <input type="radio" value="Income" checked="checked" (change)="toggleForms()" #Type="ngModel" name="Type"
+          [(ngModel)]="service.formData.Type">
+        <span class="checkmark"></span>
+      </label></div>
+    <div class="col">
+      <label class="container">Expense
+        <input type="radio" value="Expense" #Type="ngModel" (change)="toggleForms()" name="Type"
+          [(ngModel)]="service.formData.Type">
+        <span class="checkmark"></span>
+      </label>
+    </div>
   </div>
-  <div *ngIf="!service.isIncome"  class="mb-3">
+  <div *ngIf="!service.isIncome" class="mb-3">
     <label for="inputCategory">Category</label>
     <select id="inputCategory" class="form-control form-control-lg" #Category="ngModel" name="Category"
-      [(ngModel)]="service.formData.Category.Name" required>
-      <option *ngFor="let Category of Categories" [ngValue]="Category.Name">{{Category.Name}}</option>
+      [(ngModel)]="service.formData.Category" required>
+      <option *ngFor="let Category of categoryService.categories" [ngValue]="Category.Name">{{Category.Name}}</option>
     </select>
   </div>
   <div class="mb-3">
@@ -32,20 +37,20 @@
         [(ngModel)]="service.formData.Date" required>
     </div>
     <div *ngIf="!service.isIncome" id="paymentMethod" class="mb-3">
-        <label for="payment">Payment Method</label>
-        <select id="payment" class="form-control form-control-lg" #PaymentMethod="ngModel" name="PaymentMethod"
-          [(ngModel)]="service.formData.PaymentMethod" required>
-          <option value="cash" selected>Cash</option>
-          <option value="cheque">Cheque</option>
-          <option value="Credit" >Credit Card</option>
-          <option value="Debit">Debit Card</option>
-        </select>
-      </div>
-      <div *ngIf="service.isIncome" class="mb-3">
-        <label>Source</label>
-        <input class="form-control form-control-lg" placeholder="Salary.." #Source="ngModel" name="Source"
-          [(ngModel)]="service.formData.Source">
-      </div>
+      <label for="payment">Payment Method</label>
+      <select id="payment" class="form-control form-control-lg" #PaymentMethod="ngModel" name="PaymentMethod"
+        [(ngModel)]="service.formData.PaymentMethod" required>
+        <option value="cash" selected>Cash</option>
+        <option value="cheque">Cheque</option>
+        <option value="Credit">Credit Card</option>
+        <option value="Debit">Debit Card</option>
+      </select>
+    </div>
+    <div *ngIf="service.isIncome" class="mb-3">
+      <label>Source</label>
+      <input class="form-control form-control-lg" placeholder="Salary.." #Source="ngModel" name="Source"
+        [(ngModel)]="service.formData.Source">
+    </div>
     <div class="mb-3">
       <label>Description</label>
       <input class="form-control form-control-lg" placeholder="Description" #Description="ngModel" name="Description"

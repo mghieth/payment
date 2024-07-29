@@ -20,14 +20,19 @@
         <li class="nav-item">
           <a class="nav-link" href="debt">Debt</a>
         </li>
-        
       </ul>
      
     </div>
-    <div class="nav-item"><a class="nav-link" href="/profile" >My Profile </a>
+    <div class="nav-item dropdown" ngbDropdown>
+      <button class="btn btn-info dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+        <span class="glyphicon glyphicon-log-out"></span> More
+      </button>
+      <ul class="dropdown-menu"  ngbDropdownMenu aria-labelledby="navbarScrollingDropdown">
+        <li ngbDropdownItem><a class="dropdown-item" href="/profile">My Profile</a></li>
+        <li ngbDropdownItem><a class="dropdown-item" href="#">Settings</a></li>
+        <li ngbDropdownItem><hr class="dropdown-divider"></li>
+        <li ngbDropdownItem><a class="dropdown-item" (click)="logout()"  href="#">Log out</a></li>
+      </ul>
     </div>
-    <a (click)="logout()" href="#" class="btn btn-info btn-lg">
-      <span class="glyphicon glyphicon-log-out"></span> Log out
-    </a>
   </nav>
   <router-outlet></router-outlet>

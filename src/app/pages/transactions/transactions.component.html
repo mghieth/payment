@@ -49,7 +49,7 @@
             <tr *ngFor="let pd of service.list" (click)="populateForm(pd)" [ngStyle]="{'--bs-table-color': pd.Type === 'Expense' ? 'red' : '#0ae50a'}" >
               <td>{{pd.Type}}</td>
               <td>{{pd.Amount}}$</td>
-              <td>{{pd.Category.Name}}</td>
+              <td>{{pd.Category}}</td>
               <td>{{pd.Date}}</td>
               <td>{{pd.PaymentMethod}}</td>
               <td>{{pd.Source}}</td>
