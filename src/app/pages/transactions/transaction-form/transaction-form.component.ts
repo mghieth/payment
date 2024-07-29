@@ -25,13 +25,11 @@ Cateegory = new Category();
 
 
 toggleForms() {
-  debugger;
   this.service.isIncome = !this.service.isIncome;
 }
 
   onSubmit(form:NgForm){
     this.service.formSubmitted = true
-    this.service.isIncome = true
     if(form.valid){
     if(this.service.formData.Id=="")
       this.insertRecord(form)
@@ -42,11 +40,9 @@ toggleForms() {
   }
 
   insertRecord(form:NgForm){
-    debugger;
     this.service.postTransaction()
     .subscribe({
       next:(res:any) => {
-        debugger;
         this.service.list = res as  Transaction[]
         this.service.resetForm(form)
         this.toastr.success('Inserted successfully', 'Transaction')

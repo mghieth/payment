@@ -2,12 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { PaymentDetailsComponent } from "../../payment-details/payment-details.component";
 import { TransactionService } from '../../services/transaction/transaction.service';
 import { Transaction } from '../../Models/transaction.model';
-import { NgFor } from '@angular/common';
+import { NgFor, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [PaymentDetailsComponent,NgFor],
+  imports: [PaymentDetailsComponent,NgFor,NgStyle],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

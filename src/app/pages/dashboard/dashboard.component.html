@@ -7,9 +7,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr >
+        <tr>
           <td>{{currentMonth}}</td>
-          <td>{{transactionService.totalIncome}}</td>
+          <td [ngStyle]="{'--bs-table-color': '#0ae50a'}">{{transactionService.totalIncome}}$</td>
         </tr>
       </tbody>
     </table>
@@ -17,7 +17,7 @@
   <div class="card-body">
     <table class="table table-hover">
       <thead>
-        <tr   >
+        <tr >
             <th scope="col">Month</th>
             <th scope="col">Expense Amount</th>
         </tr>
@@ -25,7 +25,11 @@
       <tbody>
         <tr>
             <td>{{currentMonth}}</td>
-            <td>{{transactionService.totalexpens}}</td>
+            <td [ngStyle]="{'--bs-table-color': 'red'}" >{{transactionService.totalexpens}}$</td>
+        </tr>
+        <tr>
+          <td>Balance</td>
+          <td [ngStyle]="{'--bs-table-color': transactionService.balanceAmount < 0 ? 'red' : '#0ae50a'}">{{transactionService.balanceAmount}}$</td>
         </tr>
       </tbody>
     </table>

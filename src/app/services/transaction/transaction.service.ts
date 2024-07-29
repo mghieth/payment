@@ -20,6 +20,7 @@ export class TransactionService {
   userId:any= localStorage.getItem("UserId")
   totalexpens:number=0
   totalIncome:number=0
+  balanceAmount:number =0
   isIncome = false;
 
   
@@ -43,12 +44,13 @@ getIncomeExpense(){
         next: (res: any)=>{
          this.list= res as Transaction[]
          this.list.forEach(element => {
-          if(element.Category.Name=="Income"){
+          if(element.Type=="Income"){
             this.totalIncome= this.totalIncome + element.Amount 
           }
-          if(element.Category.Name=="Expense"){
+          if(element.Type=="Expense"){
             this.totalexpens=this.totalexpens + element.Amount
           }
+          this.balanceAmount= this.totalIncome -this.totalexpens
         });
         },
         error : (err: any)=>{console.log(err)}
@@ -75,7 +77,6 @@ getIncomeExpense(){
       form.form.reset()
       this.formData= new Transaction()
       this.formSubmitted = false;
-      this.isIncome = true;
 
     }
   }

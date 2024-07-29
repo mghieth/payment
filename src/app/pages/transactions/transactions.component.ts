@@ -3,14 +3,14 @@ import { TransactionFormComponent } from "./transaction-form/transaction-form.co
 import { ToastrService } from 'ngx-toastr';
 import { Transaction } from '../../Models/transaction.model';
 import {HttpClient} from "@angular/common/http";
-import{NgFor} from '@angular/common';
+import{NgFor, NgStyle} from '@angular/common';
 import { TransactionService } from '../../services/transaction/transaction.service';
 
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [TransactionFormComponent,NgFor],
+  imports: [TransactionFormComponent,NgFor,NgStyle],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
@@ -25,6 +25,9 @@ export class TransactionsComponent implements OnInit{
 
   populateForm(selectedRecord: Transaction){
     this.service.formData = Object.assign({},selectedRecord) 
+    if(this.service.formData.Type == 'Income')
+      this.service.isIncome=true
+    else this.service.isIncome=false
   }
 
   onDelete(id:string){
