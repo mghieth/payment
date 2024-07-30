@@ -25,11 +25,11 @@
     </div>
     <div class="nav-item dropdown" ngbDropdown>
       <button class="btn btn-info dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
-        <span class="glyphicon glyphicon-log-out"></span> More
+        <span class="glyphicon glyphicon-log-out"></span> {{userServce.userName}}
       </button>
       <ul class="dropdown-menu"  ngbDropdownMenu aria-labelledby="navbarScrollingDropdown">
         <li ngbDropdownItem><a class="dropdown-item" href="/profile">My Profile</a></li>
-        <li ngbDropdownItem><a class="dropdown-item" href="#">Settings</a></li>
+        <li ngbDropdownItem><a class="dropdown-item" href="/setting">Settings</a></li>
         <li ngbDropdownItem><hr class="dropdown-divider"></li>
         <li ngbDropdownItem><a class="dropdown-item" (click)="logout()"  href="#">Log out</a></li>
       </ul>

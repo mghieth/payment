@@ -9,7 +9,7 @@
       <tbody>
         <tr>
           <td>{{currentMonth}}</td>
-          <td [ngStyle]="{'--bs-table-color': '#0ae50a'}">{{transactionService.totalIncome}}$</td>
+          <td [ngStyle]="{'--bs-table-color': '#0ae50a'}">{{transactionService.totalIncome}}{{userService.newUser.Symbol}}</td>
         </tr>
       </tbody>
     </table>
@@ -25,11 +25,11 @@
       <tbody>
         <tr>
             <td>{{currentMonth}}</td>
-            <td [ngStyle]="{'--bs-table-color': 'red'}" >{{transactionService.totalexpens}}$</td>
+            <td [ngStyle]="{'--bs-table-color': 'red'}" >{{transactionService.totalexpens}}{{userService.newUser.Symbol}}</td>
         </tr>
         <tr>
           <td>Balance</td>
-          <td [ngStyle]="{'--bs-table-color': transactionService.balanceAmount < 0 ? 'red' : '#0ae50a'}">{{transactionService.balanceAmount}}$</td>
+          <td [ngStyle]="{'--bs-table-color': transactionService.balanceAmount < 0 ? 'red' : '#0ae50a'}">{{transactionService.balanceAmount}}{{userService.newUser.Symbol}}</td>
         </tr>
       </tbody>
     </table>

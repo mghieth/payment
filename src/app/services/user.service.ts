@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../Models/user.model';
 import { ToastrService } from 'ngx-toastr';
+import { Currency } from '../Models/currency.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,16 @@ export class UserService {
   http=inject(HttpClient);
   newUser : User = new User()
   userId:any = localStorage.getItem("UserId")
-
+  userName:string=""
+  currencyName:string=""
   url:string = environment.apiBaseUrl + '/User'
   loginObj:any = {
     "Email":"",
     "Password":""
   }
+
+  currentCurrency= new Currency()  
+
 
 getUserId(){
   this.userId
@@ -69,6 +74,9 @@ getUserId(){
       .subscribe({
         next: (res: any)=>{
          this.newUser= res as User
+         this.userName=this.newUser.Name
+         this.currencyName=this.newUser.CurrencyName
+         this.currentCurrency.name=this.newUser.CurrencyName
         },
         error : (err: any)=>{console.log(err)}
       })
@@ -76,6 +84,10 @@ getUserId(){
 
   UpdateUser(){
     debugger
+    this.newUser.CurrencyName=this.currentCurrency.name
+    this.newUser.CurrencyCode=this.currentCurrency.cc
+    this.newUser.Symbol=this.currentCurrency.symbol
+
    return this.http.put(this.url+'/'+this.userId,this.newUser)
   }
   

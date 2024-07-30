@@ -1,11 +1,9 @@
 import { Component,OnInit,inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import {HttpClient} from "@angular/common/http";
 import{NgFor} from '@angular/common';
 import { SavingGoalFormComponent } from './saving-goal-form/saving-goal-form.component';
 import { SavingGoalService } from '../../services/savingGoal/saving-goal.service';
 import { SavingGoal } from '../../Models/saving-goal.model';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
 
@@ -19,7 +17,6 @@ import { ToastModule } from 'primeng/toast';
 
 export class SavingGoalComponent implements OnInit{
   toastr= inject(ToastrService)
-  http= inject(HttpClient)
   service=inject(SavingGoalService)
  
 

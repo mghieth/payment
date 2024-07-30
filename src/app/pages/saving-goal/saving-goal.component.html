@@ -23,8 +23,8 @@
                 <tbody>
                   <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
                     <td>{{pd.GoalName}}</td>
-                    <td>{{pd.TargetAmount}}</td>
-                    <td>{{pd.CurrentAmount}}</td>
+                    <td>{{pd.TargetAmount}}{{service.userService.newUser.Symbol}}</td>
+                    <td>{{pd.CurrentAmount}}{{service.userService.newUser.Symbol}}</td>
                     <td>{{pd.Deadline}}</td>
                     <td>
                       <div class="card mb-100">

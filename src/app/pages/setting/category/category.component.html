@@ -1,0 +1,45 @@
+<div class="row mt-2">
+  <div class="card mb-4">
+    <div class="card-header">
+      Category
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pd of list" (click)="populateForm(pd)">
+            <td>{{pd.Name}}</td>
+            <td><span class="text-secondary">
+                <button type="button" class="btn btn-danger" [ngStyle]="{'visibility': pd.UserId ==null ? 'hidden' : 'visible'}" (click)="onDelete(pd.Id)">Delete</button>
+              </span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="formSubmitted" novalidate autocomplete="on">
+      <div class="row">
+        <div class="col-3">
+          <div class="row">
+            <div class="col-2"> <label>Name</label></div>
+            <div class="col">
+              <input class="form-control form-control" #Name="ngModel" name="Name" [(ngModel)]="formData.Name"
+                required></div>
+          </div>
+        </div>
+        <div class="col">
+          <button class="btn btn-lg btn-info" type="submit">
+            Add/Update Category
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-4">
+  </div>
+</div>

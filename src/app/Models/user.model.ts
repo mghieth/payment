@@ -6,4 +6,7 @@ export class User {
     DateOfBirth: Date | undefined
     PhoneNumber: string =""
     Address: string =""
+    CurrencyName : string=""
+    CurrencyCode : string=""
+    Symbol : string=""
 }

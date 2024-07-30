@@ -22,9 +22,9 @@
           <tbody>
             <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
               <td>{{pd.DebtType}}</td>
-              <td>{{pd.PrincipalAmount}}</td>
+              <td>{{pd.PrincipalAmount}}{{service.userService.newUser.Symbol}}</td>
               <td>{{pd.InterestRate}}</td>
-              <td>{{pd.RemainingAmount}}</td>
+              <td>{{pd.RemainingAmount}}{{service.userService.newUser.Symbol}}</td>
               <td>{{pd.DueDate}}</td>
               <td><span class="text-secondary">
                 <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
