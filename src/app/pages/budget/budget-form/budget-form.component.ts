@@ -4,6 +4,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Budget } from '../../../Models/budget.model';
 import { NgFor,KeyValuePipe } from '@angular/common';
+import { CategoryService } from '../../../services/category/category.service';
+import { Category } from '../../../Models/transaction.model';
 
 @Component({
   selector: 'app-budget-form',
@@ -13,12 +15,15 @@ import { NgFor,KeyValuePipe } from '@angular/common';
   styleUrl: './budget-form.component.css'
 })
 export class BudgetFormComponent {
-  constructor(public service: BudgetService,private toastr: ToastrService){
+  constructor(public service: BudgetService,private toastr: ToastrService,public categoryService: CategoryService){
   }
 
   dict: [] = [];
 
-  addAllocation(form:NgForm){
+  Category = new Category();
+
+  ngOnInit(): void {
+    this.categoryService.getCategories()
   }
 
   onSubmit(form:NgForm){

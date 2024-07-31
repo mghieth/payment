@@ -4,5 +4,6 @@ export class Budget {
     UserId: string=""
     TotalBudget:number | undefined
     Month: Date | undefined
-    AllocatedAmounts: {[key:string]:any;} = {}
+    Category:  string=""
+    RemainingAmount:number=0
 }

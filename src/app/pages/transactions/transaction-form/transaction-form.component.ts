@@ -28,11 +28,12 @@ export class TransactionFormComponent implements OnInit {
     this.categoryService.getCategories()
   }
 
-
-
-
 toggleForms() {
-  this.service.isIncome = !this.service.isIncome;
+  if(this.service.formData.Type=="Income"){
+    this.service.isIncome =true
+  }else{
+    this.service.isIncome=false
+  }
 }
 
   onSubmit(form:NgForm){

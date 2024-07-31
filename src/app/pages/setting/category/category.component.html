@@ -14,7 +14,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let pd of list" (click)="populateForm(pd)">
-            <td>{{pd.Name}}</td>
+            <td title="Cilck here to Update">{{pd.Name}}</td>
             <td><span class="text-secondary">
                 <button type="button" class="btn btn-danger" [ngStyle]="{'visibility': pd.UserId ==null ? 'hidden' : 'visible'}" (click)="onDelete(pd.Id)">Delete</button>
               </span></td>

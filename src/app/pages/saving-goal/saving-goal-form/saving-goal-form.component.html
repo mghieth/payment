@@ -18,6 +18,7 @@
             <input class="form-control form-control-lg" placeholder="10000$"
             #CurrentAmount="ngModel" name="CurrentAmount"
             [(ngModel)]="service.formData.CurrentAmount" required>
+            <span style="color: red;" [ngStyle]="{'visibility': showError ? 'visible' : 'hidden'}">The Current Amount should be less than target amount</span>
         </div>
         <div class="mb-3">
             <label>Deadline</label>

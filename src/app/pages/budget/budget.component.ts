@@ -25,7 +25,7 @@ export class BudgetComponent implements OnInit {
 
   populateForm(selectedRecord: Budget){
     this.service.formData = Object.assign({},selectedRecord) 
-    this.service.dictionary=this.service.formData.AllocatedAmounts
+    //this.service.dictionary=this.service.formData.AllocatedAmounts
   }
 
   onDelete(id:string){

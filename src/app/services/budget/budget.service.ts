@@ -33,14 +33,14 @@ export class BudgetService {
     postBudget(category: string, amount: number){
       this.formData.UserId=this.userId
       debugger;
-      this.formData.AllocatedAmounts={[category]: amount};
+     // this.formData.AllocatedAmounts={[category]: amount};
       return this.http.post(this.url,this.formData)
     }
   
     putBudget(category: string, amount: number){
       this.formData.UserId=this.userId
-      this.dictionary={[category]: amount};
-      this.formData.AllocatedAmounts={[category]: amount};
+    //  this.dictionary={[category]: amount};
+    //  this.formData.AllocatedAmounts={[category]: amount};
       return this.http.put(this.url+'/'+this.formData.Id,this.formData)
     }
    

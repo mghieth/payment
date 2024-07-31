@@ -14,21 +14,23 @@
                   <tr   >
                     <th scope="col">Month</th>
                     <th scope="col">Total Budget</th>
-                    <th scope="col">Allocated Amounts</th>
-                   <!-- <th scope="col">Remaining Amounts</th>--> 
+                    <th scope="col">Category</th>
+                   <th scope="col">Remaining Amounts</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
                     <td>{{pd.Month}}</td>
-                    <td>{{pd.TotalBudget}}</td>              
-                    <td *ngFor="let item of pd.AllocatedAmounts | keyvalue">
+                    <td>{{pd.TotalBudget}}</td>    
+                    <td>{{pd.Category}}</td>
+                    <td>{{pd.RemainingAmount}}</td>
+                   <!--  <td *ngFor="let item of pd.AllocatedAmounts | keyvalue">
                       <ul class="list-group">
                         <li class="list-group-item">
                       Category: {{ item.key }}, Amounts: {{ item.value }}
                     </li>
                     </ul>
-                    </td>
+                    </td>-->
                     <td><span class="text-secondary">
                       <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
                     </span></td>

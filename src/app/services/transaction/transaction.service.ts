@@ -31,7 +31,6 @@ export class TransactionService {
       .subscribe({
         next: (res: any)=>{
          this.list= res as Transaction[]
-
         },
         error : (err: any)=>{console.log(err)}
       })
@@ -55,10 +54,8 @@ getIncomeExpense(){
         },
         error : (err: any)=>{console.log(err)}
       })
-}
+    }
 
-
-  
     postTransaction(){
       this.formData.UserId=this.userId
       return this.http.post(this.url,this.formData)

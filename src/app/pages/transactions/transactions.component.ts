@@ -14,6 +14,7 @@ import { TransactionService } from '../../services/transaction/transaction.servi
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
+
 export class TransactionsComponent implements OnInit{
   toastr= inject(ToastrService)
   http= inject(HttpClient)
@@ -42,6 +43,5 @@ export class TransactionsComponent implements OnInit{
         error: (err:any) => {console.log(err)}
       })
     }
-   
   }
 }

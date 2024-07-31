@@ -2,17 +2,23 @@
   <input type="hidden" name="Id" [value]="service.formData.Id" />
   <div class="mb-3">
     <label>Month</label>
-    <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Amount="ngModel" name="Month"
+    <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Month="ngModel" name="Month"
       [(ngModel)]="service.formData.Month" required>
   </div>
   <div class="row">
     <div class="mb-3">
       <label>Total Budget</label>
-      <input class="form-control form-control-lg" placeholder="1000000$" #Date="ngModel" name="TotalBudget"
+      <input class="form-control form-control-lg" placeholder="1000000$" #TotalBudget="ngModel" name="TotalBudget"
         [(ngModel)]="service.formData.TotalBudget" required>
     </div>
-
-    <div  *ngFor="let pd of service.dictionary| keyvalue" >
+    <div class="mb-3">
+      <label for="inputCategory">Category</label>
+      <select id="inputCategory" class="form-control form-control-lg" #Category="ngModel" name="Category"
+        [(ngModel)]="service.formData.Category" required>
+        <option *ngFor="let Category of categoryService.categories" [ngValue]="Category.Name">{{Category.Name}}</option>
+      </select>
+    </div>
+    <!-- <div  *ngFor="let pd of service.dictionary| keyvalue" >
       <div class="mb-3">
         <label for="newKey">Category</label>
         <input type="text" class="form-control form-control-lg" #newKey="ngModel" [(ngModel)]="pd.key" name="newKey">
@@ -23,7 +29,7 @@
           name="newValue">
       </div>
       <span class="text-secondary"><a class="fa-solid flex-grow-1 mouse-hover" (click)="addAllocation(form)"> Add more</a></span>
-    </div>
+    </div>-->
 
   </div>
   <div class="d-grid">
