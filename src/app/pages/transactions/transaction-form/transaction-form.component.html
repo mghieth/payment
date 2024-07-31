@@ -33,7 +33,7 @@
   <div class="row">
     <div class="mb-3">
       <label>Date</label>
-      <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Date="ngModel" name="date"
+      <input type="date"  class="form-control form-control-lg"  #Date="ngModel" name="date"
         [(ngModel)]="service.formData.Date" required>
     </div>
     <div *ngIf="!service.isIncome" id="paymentMethod" class="mb-3">

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
@@ -13,8 +13,12 @@ import { NgStyle } from '@angular/common';
   templateUrl: './saving-goal-form.component.html',
   styleUrl: './saving-goal-form.component.css'
 })
-export class SavingGoalFormComponent {
+export class SavingGoalFormComponent implements OnInit{
   constructor(public service: SavingGoalService,private toastr: ToastrService){
+
+  }
+  ngOnInit(): void {
+    this.service.formData.Deadline=this.service.userService.getDate(new Date)
 
   }
 showError:boolean=false

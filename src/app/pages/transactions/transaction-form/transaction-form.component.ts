@@ -26,6 +26,7 @@ export class TransactionFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getCategories()
+    this.service.formData.Date=this.service.userService.getDate(new Date)
   }
 
 toggleForms() {

@@ -51,5 +51,6 @@ export class BudgetService {
       form.form.reset()
       this.formData= new Budget()
       this.formSubmitted = false;
+      this.formData.Month=this.userService.getDate(new Date)
     }
 }

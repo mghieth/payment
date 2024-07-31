@@ -47,5 +47,7 @@ export class DebtService {
       form.form.reset()
       this.formData= new Debt()
       this.formSubmitted = false;
+      this.formData.DueDate=this.userService.getDate(new Date)
+
     }
 }

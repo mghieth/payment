@@ -1,7 +1,7 @@
 import { Component,OnInit,inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {HttpClient} from "@angular/common/http";
-import{NgFor} from '@angular/common';
+import{CommonModule, NgFor} from '@angular/common';
 import { DebtFormComponent } from './debt-form/debt-form.component';
 import { DebtService } from '../../services/debt/debt.service';
 import { Debt } from '../../Models/debt.model';
@@ -9,7 +9,7 @@ import { Debt } from '../../Models/debt.model';
 @Component({
   selector: 'app-debt',
   standalone: true,
-  imports: [DebtFormComponent,NgFor],
+  imports: [DebtFormComponent,NgFor,CommonModule],
   templateUrl: './debt.component.html',
   styleUrl: './debt.component.css'
 })
@@ -25,6 +25,8 @@ export class DebtComponent implements OnInit{
 
   populateForm(selectedRecord: Debt){
     this.service.formData = Object.assign({},selectedRecord) 
+    let tempDate = new Date(this.service.formData.DueDate ?? new Date);
+    this.service.formData.DueDate= this.service.userService.getDate(tempDate)
   }
 
   onDelete(id:string){

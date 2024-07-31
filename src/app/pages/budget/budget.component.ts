@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BudgetFormComponent } from './budget-form/budget-form.component';
-import { NgFor,KeyValuePipe } from '@angular/common';
+import { NgFor,KeyValuePipe, CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { BudgetService } from '../../services/budget/budget.service';
@@ -9,7 +9,7 @@ import { Budget } from '../../Models/budget.model';
 @Component({
   selector: 'app-budget',
   standalone: true,
-  imports: [BudgetFormComponent,NgFor,KeyValuePipe],
+  imports: [BudgetFormComponent,NgFor,KeyValuePipe,CommonModule],
   templateUrl: './budget.component.html',
   styleUrl: './budget.component.css'
 })
@@ -25,6 +25,8 @@ export class BudgetComponent implements OnInit {
 
   populateForm(selectedRecord: Budget){
     this.service.formData = Object.assign({},selectedRecord) 
+    let tempDate = new Date(this.service.formData.Month ?? new Date);
+    this.service.formData.Month=this.service.userService.getDate(tempDate)
     //this.service.dictionary=this.service.formData.AllocatedAmounts
   }
 

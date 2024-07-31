@@ -1,6 +1,6 @@
 import { Component,OnInit,inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import{NgFor} from '@angular/common';
+import{CommonModule, NgFor} from '@angular/common';
 import { SavingGoalFormComponent } from './saving-goal-form/saving-goal-form.component';
 import { SavingGoalService } from '../../services/savingGoal/saving-goal.service';
 import { SavingGoal } from '../../Models/saving-goal.model';
@@ -10,7 +10,7 @@ import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-saving-goal',
   standalone: true,
-  imports: [SavingGoalFormComponent,NgFor,ProgressBarModule,ToastModule],
+  imports: [SavingGoalFormComponent,NgFor,ProgressBarModule,ToastModule,CommonModule],
   templateUrl: './saving-goal.component.html',
   styleUrl: './saving-goal.component.css'
 })
@@ -26,6 +26,8 @@ export class SavingGoalComponent implements OnInit{
 
   populateForm(selectedRecord: SavingGoal){
     this.service.formData = Object.assign({},selectedRecord) 
+    let tempDate = new Date(this.service.formData.Deadline ?? new Date);
+    this.service.formData.Deadline= this.service.userService.getDate(tempDate)
   }
 
   

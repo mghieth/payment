@@ -77,10 +77,13 @@ getUserId(){
          this.userName=this.newUser.Name
          this.currencyName=this.newUser.CurrencyName
          this.currentCurrency.name=this.newUser.CurrencyName
+         let tempDate = new Date(this.newUser.DateOfBirth ?? new Date);
+         this.newUser.DateOfBirth=this.getDate(tempDate)
         },
         error : (err: any)=>{console.log(err)}
       })
-  }
+    
+    }
 
   UpdateUser(){
     debugger
@@ -94,5 +97,17 @@ getUserId(){
   resetForm(form:NgForm){
     form.form.reset()
     this.newUser= new User()
+  }
+
+  getDate(date:Date){
+    let y:any = date.getFullYear();
+    let m:any= date.getMonth() + 1;
+    let d:any = date.getDate();
+    let today:any
+
+    m = m < 10 ? "0" + m : m;
+    d = d < 10 ? "0" + d : d;
+    today= y + "-" + m + "-" + d;
+    return today
   }
 }

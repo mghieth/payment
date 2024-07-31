@@ -1,4 +1,4 @@
-import { Component,inject, OnInit } from '@angular/core';
+import { Component,inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
@@ -10,31 +10,22 @@ import { UserService } from '../../services/user.service';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent{
   service=inject(UserService)
   toastr=inject(ToastrService)
 
 
-  ngOnInit(){
-    this.service.getUser();
-
-  }
-
   onSubmit(form:NgForm){
     if(form.valid){
-    this.updateRecord()
+      this.service.UpdateUser()
+      .subscribe({
+        next:(res:any) => {
+          this.toastr.info('Updated successfully', 'User')
+        },
+        error:(err: any) => {console.log(err)}
+      })
     }
     
   }
 
-  updateRecord(){
-    debugger;
-    this.service.UpdateUser()
-    .subscribe({
-      next:(res:any) => {
-        this.toastr.info('Updated successfully', 'User')
-      },
-      error:(err: any) => {console.log(err)}
-    })
-  }
 }

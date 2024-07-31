@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BudgetService } from '../../../services/budget/budget.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { Category } from '../../../Models/transaction.model';
   templateUrl: './budget-form.component.html',
   styleUrl: './budget-form.component.css'
 })
-export class BudgetFormComponent {
+export class BudgetFormComponent implements OnInit {
   constructor(public service: BudgetService,private toastr: ToastrService,public categoryService: CategoryService){
   }
 
@@ -24,6 +24,7 @@ export class BudgetFormComponent {
 
   ngOnInit(): void {
     this.categoryService.getCategories()
+    this.service.formData.Month=this.service.userService.getDate(new Date)
   }
 
   onSubmit(form:NgForm){

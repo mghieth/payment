@@ -25,7 +25,7 @@
                     <td>{{pd.GoalName}}</td>
                     <td>{{pd.TargetAmount}}{{service.userService.newUser.Symbol}}</td>
                     <td>{{pd.CurrentAmount}}{{service.userService.newUser.Symbol}}</td>
-                    <td>{{pd.Deadline}}</td>
+                    <td>{{pd.Deadline| date:"M/d/yyyy"}}</td>
                     <td>
                       <div class="card mb-100">
                       <p-progressBar [value]="(pd.CurrentAmount/pd.TargetAmount)*100" />

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
@@ -13,9 +13,12 @@ import { Investment } from '../../../Models/investment.model';
   templateUrl: './investment-form.component.html',
   styleUrl: './investment-form.component.css'
 })
-export class InvestmentFormComponent {
+export class InvestmentFormComponent implements OnInit {
   constructor(public service: InvestmentService,private toastr: ToastrService){
 
+  }
+  ngOnInit(): void {
+    this.service.formData.DateOfInvestment=this.service.userService.getDate(new Date)
   }
 
   onSubmit(form:NgForm){

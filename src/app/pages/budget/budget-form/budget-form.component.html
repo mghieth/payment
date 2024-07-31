@@ -2,7 +2,7 @@
   <input type="hidden" name="Id" [value]="service.formData.Id" />
   <div class="mb-3">
     <label>Month</label>
-    <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Month="ngModel" name="Month"
+    <input type="date" class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Month="ngModel" name="Month"
       [(ngModel)]="service.formData.Month" required>
   </div>
   <div class="row">

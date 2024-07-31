@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
-                    <td>{{pd.Month}}</td>
+                    <td>{{pd.Month | date:"MMM"}}</td>
                     <td>{{pd.TotalBudget}}</td>    
                     <td>{{pd.Category}}</td>
                     <td>{{pd.RemainingAmount}}</td>

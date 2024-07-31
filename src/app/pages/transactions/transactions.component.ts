@@ -3,14 +3,14 @@ import { TransactionFormComponent } from "./transaction-form/transaction-form.co
 import { ToastrService } from 'ngx-toastr';
 import { Transaction } from '../../Models/transaction.model';
 import {HttpClient} from "@angular/common/http";
-import{NgFor, NgStyle} from '@angular/common';
+import{CommonModule, NgFor, NgStyle} from '@angular/common';
 import { TransactionService } from '../../services/transaction/transaction.service';
 
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [TransactionFormComponent,NgFor,NgStyle],
+  imports: [TransactionFormComponent,NgFor,NgStyle,CommonModule],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
@@ -25,7 +25,9 @@ export class TransactionsComponent implements OnInit{
   }
 
   populateForm(selectedRecord: Transaction){
-    this.service.formData = Object.assign({},selectedRecord) 
+    this.service.formData = Object.assign({},selectedRecord)
+    let tempDate = new Date(this.service.formData.Date ?? new Date);
+    this.service.formData.Date= this.service.userService.getDate(tempDate)
     if(this.service.formData.Type == 'Income')
       this.service.isIncome=true
     else this.service.isIncome=false

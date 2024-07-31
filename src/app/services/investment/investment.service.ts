@@ -47,5 +47,7 @@ export class InvestmentService {
       form.form.reset()
       this.formData= new Investment()
       this.formSubmitted = false;
+      this.formData.DateOfInvestment=this.userService.getDate(new Date)
+
     }
 }

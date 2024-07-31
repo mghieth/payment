@@ -24,7 +24,7 @@ export class TransactionService {
   isIncome = false;
 
   
-  
+ 
   refreshList(){
     debugger;
       this.http.get(this.url+'?userId='+this.userId)
@@ -74,6 +74,6 @@ getIncomeExpense(){
       form.form.reset()
       this.formData= new Transaction()
       this.formSubmitted = false;
-
+      this.formData.Date=this.userService.getDate(new Date)
     }
   }

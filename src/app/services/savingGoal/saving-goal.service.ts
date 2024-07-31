@@ -46,6 +46,8 @@ export class SavingGoalService {
     form.form.reset()
     this.formData= new SavingGoal()
     this.formSubmitted = false;
+    this.formData.Deadline=this.userService.getDate(new Date)
+
   }
 
 }
