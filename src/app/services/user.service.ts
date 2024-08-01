@@ -8,106 +8,99 @@ import { ToastrService } from 'ngx-toastr';
 import { Currency } from '../Models/currency.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  constructor() {}
 
-  constructor() { }
-  
-  toastr = inject(ToastrService)
+  toastr = inject(ToastrService);
   router = inject(Router);
-  http=inject(HttpClient);
-  newUser : User = new User()
-  userId:any = localStorage.getItem("UserId")
-  userName:string=""
-  currencyName:string=""
-  url:string = environment.apiBaseUrl + '/User'
-  loginObj:any = {
-    "Email":"",
-    "Password":""
+  http = inject(HttpClient);
+  newUser: User = new User();
+  userId: any = localStorage.getItem('UserId');
+  userName: string = '';
+  currencyName: string = '';
+  url: string = environment.apiBaseUrl + '/User';
+  loginObj: any = {
+    Email: '',
+    Password: '',
+  };
+
+  currentCurrency = new Currency();
+
+  getUserId() {
+    this.userId;
   }
 
-  currentCurrency= new Currency()  
-
-
-getUserId(){
-  this.userId
-}
-
-  onLogin(){
+  onLogin() {
     debugger;
-    this.http.post(this.url+'/login',this.loginObj)
-    .subscribe((res:any)=>{
+    this.http.post(this.url + '/login', this.loginObj).subscribe((res: any) => {
       debugger;
-      if(res.Result){
-        alert("login success")
-        localStorage.setItem("LoginToken",res.Token)
-        localStorage.setItem("UserId",res.UserId)
-        this.router.navigateByUrl("dashboard")
+      if (res.Result) {
+        alert('login success');
+        localStorage.setItem('LoginToken', res.Token);
+        localStorage.setItem('UserId', res.UserId);
+        this.router.navigateByUrl('dashboard');
       } else {
-        alert("Check email or password")
+        alert('Check email or password');
       }
-    })
+    });
   }
-  
-  
-  onRegister(form:NgForm){
-    if(form.valid){
-      this.http.post(this.url,this.newUser)
-      .subscribe({
-        next:(res:any) => {
-          this.toastr.success('Register successfully', 'user')
-          localStorage.setItem("LoginToken",res.Token)
-          localStorage.setItem("UserId",res.UserId)
-          this.router.navigateByUrl("dashboard")
+
+  onRegister(form: NgForm) {
+    if (form.valid) {
+      this.http.post(this.url, this.newUser).subscribe({
+        next: (res: any) => {
+          this.toastr.success('Register successfully', 'user');
+          localStorage.setItem('LoginToken', res.Token);
+          localStorage.setItem('UserId', res.UserId);
+          this.router.navigateByUrl('dashboard');
         },
-        error:(err: any) => {console.log(err)}
-      })
-    }
-    
-  }
-
-
-  getUser(){
-    debugger;
-         this.http.get(this.url+'?id='+this.userId)
-      .subscribe({
-        next: (res: any)=>{
-         this.newUser= res as User
-         this.userName=this.newUser.Name
-         this.currencyName=this.newUser.CurrencyName
-         this.currentCurrency.name=this.newUser.CurrencyName
-         let tempDate = new Date(this.newUser.DateOfBirth ?? new Date);
-         this.newUser.DateOfBirth=this.getDate(tempDate)
+        error: (err: any) => {
+          console.log(err);
         },
-        error : (err: any)=>{console.log(err)}
-      })
-    
+      });
     }
-
-  UpdateUser(){
-    debugger
-    this.newUser.CurrencyName=this.currentCurrency.name
-    this.newUser.CurrencyCode=this.currentCurrency.cc
-    this.newUser.Symbol=this.currentCurrency.symbol
-
-   return this.http.put(this.url+'/'+this.userId,this.newUser)
-  }
-  
-  resetForm(form:NgForm){
-    form.form.reset()
-    this.newUser= new User()
   }
 
-  getDate(date:Date){
-    let y:any = date.getFullYear();
-    let m:any= date.getMonth() + 1;
-    let d:any = date.getDate();
-    let today:any
+  getUser() {
+    this.http.get(this.url + '?id=' + this.userId).subscribe({
+      next: (res: any) => {
+        this.newUser = res as User;
+        this.userName = this.newUser.Name;
+        this.currencyName = this.newUser.CurrencyName;
+        this.currentCurrency.name = this.newUser.CurrencyName;
+        let tempDate = new Date(this.newUser.DateOfBirth ?? new Date());
+        this.newUser.DateOfBirth = this.getDate(tempDate);
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
 
-    m = m < 10 ? "0" + m : m;
-    d = d < 10 ? "0" + d : d;
-    today= y + "-" + m + "-" + d;
-    return today
+  UpdateUser() {
+    this.newUser.CurrencyName = this.currentCurrency.name;
+    this.newUser.CurrencyCode = this.currentCurrency.cc;
+    this.newUser.Symbol = this.currentCurrency.symbol;
+
+    return this.http.put(this.url + '/' + this.userId, this.newUser);
+  }
+
+  resetForm(form: NgForm) {
+    form.form.reset();
+    this.newUser = new User();
+  }
+
+  getDate(date: Date) {
+    let y: any = date.getFullYear();
+    let m: any = date.getMonth() + 1;
+    let d: any = date.getDate();
+    let today: any;
+
+    m = m < 10 ? '0' + m : m;
+    d = d < 10 ? '0' + d : d;
+    today = y + '-' + m + '-' + d;
+    return today;
   }
 }
