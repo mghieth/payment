@@ -23,7 +23,9 @@ export class TransactionService {
   totalIncome: number = 0;
   balanceAmount: number = 0;
   isIncome = false;
-
+  fromDate:Date =new Date
+  toDate:Date = new Date
+  
   refreshList() {
     this.http.get(this.url + '?userId=' + this.userId).subscribe({
       next: (res: any) => {

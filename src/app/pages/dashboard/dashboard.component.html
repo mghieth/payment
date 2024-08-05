@@ -2,17 +2,17 @@
   <form #form="ngForm" (submit)="onSubmit(form)" novalidate>
     <div class="mb-3 col-2">
       <label>From Date</label>
-      <input type="date" class="form-control form-control-lg" placeholder="YYYY-MM-DD" name="fromDate"
-        #fromDate="ngModel" [(ngModel)]="fromDate" required>
+      <input type="date" class="form-control form-control-lg"  name="fromDate" 
+        #fromDate="ngModel" [(ngModel)]="transactionService.fromDate" required>
     </div>
     <div class="mb-3 col-2">
       <label>To Date</label>
-      <input type="date" class="form-control form-control-lg" placeholder="YYYY-MM-DD" name="toDate" #toDate="ngModel"
-        [(ngModel)]="toDate" required>
+      <input type="date" class="form-control form-control-lg"  name="toDate" #toDate="ngModel"
+        [(ngModel)]="transactionService.toDate" required>
     </div>
     <div class="d-grid col-2">
       <button class="btn btn-md btn-success" type="submit">
-        Submit
+        Search
       </button>
     </div>
   </form>

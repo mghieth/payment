@@ -1,7 +1,6 @@
 import { FormsModule, NgForm } from '@angular/forms';
 import { Component, inject, OnInit } from '@angular/core';
 import { TransactionService } from '../../services/transaction/transaction.service';
-import { Transaction } from '../../Models/transaction.model';
 import { CommonModule, NgFor, NgStyle } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { TransactionsComponent } from '../transactions/transactions.component';
@@ -17,10 +16,14 @@ export class DashboardComponent implements OnInit {
   userService = inject(UserService);
   transactionService = inject(TransactionService);
   showCalculation: boolean = false;
+  
 
   ngOnInit(): void {
-    // this.transactionService.getIncomeExpense();
+    debugger
     this.showCalculation = false;
+    this.transactionService.fromDate=this.userService.getDate(new Date)
+    this.transactionService.toDate=this.userService.getDate(new Date())
+
   }
 
   onSubmit(form: NgForm) {
