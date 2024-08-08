@@ -37,6 +37,8 @@ export class DebtComponent implements OnInit{
         (res:any) => {
           this.service.list = res as Debt[]
           this.toastr.error('Deleted successfully', 'Debt')
+          this.service.formData= new Debt()
+          this.service.formData.DueDate=this.service.userService.getDate(new Date)       
         },
         error: (err:any) => {console.log(err)}
       })

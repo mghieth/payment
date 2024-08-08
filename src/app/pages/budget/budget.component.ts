@@ -27,7 +27,6 @@ export class BudgetComponent implements OnInit {
     this.service.formData = Object.assign({},selectedRecord) 
     let tempDate = new Date(this.service.formData.Month ?? new Date);
     this.service.formData.Month=this.service.userService.getDate(tempDate)
-    //this.service.dictionary=this.service.formData.AllocatedAmounts
   }
 
   onDelete(id:string){
@@ -38,11 +37,12 @@ export class BudgetComponent implements OnInit {
         (res:any) => {
           this.service.list = res as Budget[]
           this.toastr.error('Deleted successfully', 'Budget')
+          this.service.formData= new Budget()
+          this.service.formData.Month=this.service.userService.getDate(new Date)       
         },
         error: (err:any) => {console.log(err)}
       })
-    }
-   
+    }  
   }
 
 }

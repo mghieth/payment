@@ -1,3 +1,4 @@
+import { CategoryService } from './../../services/category/category.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Component, inject, OnInit } from '@angular/core';
 import { TransactionService } from '../../services/transaction/transaction.service';
@@ -15,23 +16,20 @@ import { TransactionsComponent } from '../transactions/transactions.component';
 export class DashboardComponent implements OnInit {
   userService = inject(UserService);
   transactionService = inject(TransactionService);
+  categoryService = inject(CategoryService)
   showCalculation: boolean = false;
-  
 
   ngOnInit(): void {
-    debugger
     this.showCalculation = false;
     this.transactionService.fromDate=this.userService.getDate(new Date)
-    this.transactionService.toDate=this.userService.getDate(new Date())
+    this.transactionService.toDate=this.userService.getDate(new Date)
+    this.categoryService.getCategories()
 
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     debugger;
-    this.transactionService.applyFilterBetweenTwoDates(
-      form.value.fromDate,
-      form.value.toDate
-    );
+    this.transactionService.applyFilterBetweenTwoDates();
     this.showCalculation = true;
   }
 }

@@ -39,6 +39,8 @@ export class SavingGoalComponent implements OnInit{
         (res:any) => {
           this.service.list = res as SavingGoal[]
           this.toastr.error('Deleted successfully', 'Goal')
+          this.service.formData= new SavingGoal()
+          this.service.formData.Deadline=this.service.userService.getDate(new Date) 
         },
         error: (err:any) => {console.log(err)}
       })

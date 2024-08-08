@@ -1,4 +1,4 @@
-import { provideToastr } from 'ngx-toastr';
+import { Category } from './../../Models/transaction.model';
 import { UserService } from './../user.service';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
@@ -25,7 +25,8 @@ export class TransactionService {
   isIncome = false;
   fromDate:Date =new Date
   toDate:Date = new Date
-  
+  Category= new Category()
+
   refreshList() {
     this.http.get(this.url + '?userId=' + this.userId).subscribe({
       next: (res: any) => {
@@ -37,17 +38,22 @@ export class TransactionService {
     });
   }
 
-  applyFilterBetweenTwoDates(formDate: Date, toDate: Date) {
+  applyFilterBetweenTwoDates() {
     debugger;
+    this.totalexpens= 0;
+    this.totalIncome = 0;
+    this.balanceAmount = 0;
     this.http
       .get(
         this.url +
           '/GetAllTransactionwithFilter?userId=' +
           this.userId +
           '&FromDate=' +
-          formDate +
+          this.fromDate +
           '&ToDate=' +
-          toDate
+          this.toDate +
+          '&Category=' +
+          this.Category.Name
       )
       .subscribe({
         next: (res: any) => {

@@ -36,6 +36,8 @@ export class InvestmentComponent implements OnInit{
         (res:any) => {
           this.service.list = res as Investment[]
           this.toastr.error('Deleted successfully', 'Investment')
+          this.service.formData= new Investment()
+          this.service.formData.DateOfInvestment=this.service.userService.getDate(new Date) 
         },
         error: (err:any) => {console.log(err)}
       })

@@ -41,6 +41,8 @@ export class TransactionsComponent implements OnInit{
         (res:any) => {
           this.service.list = res as Transaction[]
           this.toastr.error('Deleted successfully', 'Transaction')
+          this.service.formData= new Transaction()
+          this.service.formData.Date=this.service.userService.getDate(new Date) 
         },
         error: (err:any) => {console.log(err)}
       })

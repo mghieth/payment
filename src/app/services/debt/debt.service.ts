@@ -48,6 +48,5 @@ export class DebtService {
       this.formData= new Debt()
       this.formSubmitted = false;
       this.formData.DueDate=this.userService.getDate(new Date)
-
     }
 }

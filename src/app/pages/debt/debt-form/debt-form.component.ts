@@ -35,7 +35,6 @@ export class DebtFormComponent implements OnInit{
     this.service.postDebt()
     .subscribe({
       next:(res:any) => {
-        debugger;
         this.service.list = res as  Debt[]
         this.service.resetForm(form)
         this.toastr.success('Inserted successfully', 'Investment')
