@@ -1,65 +1,69 @@
 <div class="container">
-  <form #form="ngForm" (submit)="onSubmit(form)" novalidate autocomplete="on">
+  <div class="row mt-5">
+    <div class="card">
+      <form #form="ngForm" (submit)="onSubmit(form)" novalidate autocomplete="on">
 
-    <div class="row">
-      <div class="col-3">
-        <label>Name</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control form-control-lg" placeholder="Name" #Name="ngModel" name="Name"
-          [(ngModel)]="service.newUser.Name" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Password</label>
-      </div>
-      <div class="col-3">
-        <input type="password" class="form-control form-control-lg" placeholder="Password" #Password="ngModel"
-          name="Password" [(ngModel)]="service.newUser.Password">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Email</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control form-control-lg" placeholder="Email" #Email="ngModel" name="Email"
-          [(ngModel)]="service.newUser.Email">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Birthday</label>
-      </div>
-      <div class="col-3">
-        <input type="date" class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Birthday="ngModel"
-          name="Birthday" [(ngModel)]="service.newUser.DateOfBirth">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>PhoneNumber</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control form-control-lg" placeholder="PhoneNumber" #PhoneNumber="ngModel" name="PhoneNumber"
-          [(ngModel)]="service.newUser.PhoneNumber">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Address</label>
+        <div class="row">
+          <div class="col-3">
+            <label>Full Name</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="Name" #Name="ngModel" name="Name"
+              [(ngModel)]="service.newUser.Name" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Password</label>
+          </div>
+          <div class="col-3">
+            <input type="password" class="form-control" placeholder="Password" #Password="ngModel"
+              name="Password" [(ngModel)]="service.newUser.Password">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Email</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="Email" #Email="ngModel" name="Email"
+              [(ngModel)]="service.newUser.Email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Birthday</label>
+          </div>
+          <div class="col-3">
+            <input type="date" class="form-control" placeholder="YYYY-MM-DD" #Birthday="ngModel"
+              name="Birthday" [(ngModel)]="service.newUser.DateOfBirth">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Phone Number</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="PhoneNumber" #PhoneNumber="ngModel"
+              name="PhoneNumber" [(ngModel)]="service.newUser.PhoneNumber">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Address</label>
 
-      </div>
-      <div class="col-3">
-        <input class="form-control form-control-lg" placeholder="Address" #Address="ngModel" name="Address"
-          [(ngModel)]="service.newUser.Address">
-      </div>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="Address" #Address="ngModel" name="Address"
+              [(ngModel)]="service.newUser.Address">
+          </div>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-info" type="submit">
+            Update
+          </button>
+        </div>
+      </form>
     </div>
-    <div class="col-3">
-      <button class="btn btn-lg btn-info" type="submit">
-        Update
-      </button>
-    </div>
-  </form>
+  </div>
 </div>

@@ -25,9 +25,34 @@ export class SavingGoalComponent implements OnInit {
   toastr = inject(ToastrService);
   service = inject(SavingGoalService);
   router = inject(Router);
-
+  rows: number = 5
+  current_page: number = 1
   ngOnInit(): void {
     this.service.refreshList();
+  }
+  displayList(page:number){
+    const start=this.rows * (page-1)
+    const end = start+ this.rows
+    return this.service.list.slice(start,end)
+  }
+
+  setPagination(){
+    const page_cont= Math.ceil(this.service.list.length/this.rows)
+    return Array.from({length:page_cont},(_,i)=>i+1);
+  }
+
+  onPageChange(page:number){
+    this.current_page=page;
+  }
+
+  previous(){
+    if( this.current_page > 1 )
+    this.current_page=this.current_page-1
+  }
+
+  next(){
+    if(Math.ceil(this.service.list.length/this.rows) > this.current_page)
+      this.current_page=this.current_page+1
   }
 
   populateForm(selectedRecord: SavingGoal) {

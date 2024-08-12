@@ -23,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let pd of service.list" [ngStyle]="{'--bs-table-color': pd.Type === 'Expense' ? 'red' : '#0ae50a'}" >
+            <tr *ngFor="let pd of displayList(current_page)" [ngStyle]="{'--bs-table-color': pd.Type === 'Expense' ? 'red' : '#0ae50a'}" >
               <td>{{pd.Type}}</td>
               <td>{{pd.Amount}}{{service.userService.newUser.Symbol}}</td>
               <td>{{pd.Category}}</td>
@@ -42,6 +42,22 @@
             </tr>
           </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <button class="page-link" aria-label="Previous" (click)="previous()">
+                <span aria-hidden="true">&laquo;</span>
+              </button>
+            </li>
+            <li class="page-item" *ngFor="let page of setPagination()">
+              <button class="page-link" [class.active]="current_page === page" (click)="onPageChange(page)">{{page}}</button></li>
+            <li class="page-item">
+              <button class="page-link" aria-label="Next" (click)="next()">
+                <span aria-hidden="true">&raquo;</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
    </div>
