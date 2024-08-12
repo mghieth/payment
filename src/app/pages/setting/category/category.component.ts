@@ -24,9 +24,35 @@ export class CategoryComponent implements OnInit{
   formSubmitted:boolean = false;
   userId:any= localStorage.getItem("UserId")
   toastr= inject(ToastrService)
+  rows: number = 5
+  current_page: number = 1
 
   ngOnInit():void{
     this.refreshList();
+  }
+  displayList(page:number){
+    const start=this.rows * (page-1)
+    const end = start+ this.rows
+    return this.list.slice(start,end)
+  }
+
+  setPagination(){
+    const page_cont= Math.ceil(this.list.length/this.rows)
+    return Array.from({length:page_cont},(_,i)=>i+1);
+  }
+
+  onPageChange(page:number){
+    this.current_page=page;
+  }
+
+  previous(){
+    if( this.current_page > 1 )
+    this.current_page=this.current_page-1
+  }
+
+  next(){
+    if(Math.ceil(this.list.length/this.rows) > this.current_page)
+      this.current_page=this.current_page+1
   }
 
   onSubmit(form:NgForm){
