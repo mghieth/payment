@@ -20,7 +20,7 @@
   </div>
   <div *ngIf="!service.isIncome" class="mb-3">
     <label for="inputCategory">Category</label>
-    <select id="inputCategory" class="form-control form-control-lg" #Category="ngModel" name="Category"
+    <select id="inputCategory" class="form-select form-select-lg" #Category="ngModel" name="Category"
       [(ngModel)]="service.formData.Category" required>
       <option *ngFor="let Category of categoryService.categories" [ngValue]="Category.Name">{{Category.Name}}</option>
     </select>
@@ -38,7 +38,7 @@
     </div>
     <div *ngIf="!service.isIncome" id="paymentMethod" class="mb-3">
       <label for="payment">Payment Method</label>
-      <select id="payment" class="form-control form-control-lg" #PaymentMethod="ngModel" name="PaymentMethod"
+      <select id="payment" class="form-select form-select-lg" #PaymentMethod="ngModel" name="PaymentMethod"
         [(ngModel)]="service.formData.PaymentMethod" required>
         <option value="cash" selected>Cash</option>
         <option value="cheque">Cheque</option>

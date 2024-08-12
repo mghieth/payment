@@ -5,7 +5,7 @@
   <div class="col-1">    <label>{{userService.newUser.CurrencyCode}}</label>
   </div>
   <div class="col-1">
-    <select id="inputCurrency" class="form-control form-control-me" #Currency="ngModel" name="Currency"
+    <select id="inputCurrency" class="form-select" #Currency="ngModel" name="Currency"
       [(ngModel)]="userService.currentCurrency"  (change)="updateCurrency()" required>
       <option *ngFor="let Currency of Currencies" [ngValue]="Currency">{{Currency.cc}}</option>
     </select>

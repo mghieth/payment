@@ -1,22 +1,24 @@
+import { routes } from './../../app.routes';
 import { Component, inject, OnInit } from '@angular/core';
 import { BudgetFormComponent } from './budget-form/budget-form.component';
 import { NgFor,KeyValuePipe, CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { HttpClient } from '@angular/common/http';
 import { BudgetService } from '../../services/budget/budget.service';
 import { Budget } from '../../Models/budget.model';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-budget',
   standalone: true,
-  imports: [BudgetFormComponent,NgFor,KeyValuePipe,CommonModule],
+  imports: [BudgetFormComponent,NgFor,KeyValuePipe,CommonModule,FontAwesomeModule],
   templateUrl: './budget.component.html',
   styleUrl: './budget.component.css'
 })
 export class BudgetComponent implements OnInit {
   toastr= inject(ToastrService)
-  http= inject(HttpClient)
   service=inject(BudgetService)
+  router = inject(Router);
 
 
   ngOnInit():void{
@@ -27,6 +29,8 @@ export class BudgetComponent implements OnInit {
     this.service.formData = Object.assign({},selectedRecord) 
     let tempDate = new Date(this.service.formData.Month ?? new Date);
     this.service.formData.Month=this.service.userService.getDate(tempDate)
+    this.router.navigateByUrl('budget/createBudget');
+    this.service.isUpdate= true
   }
 
   onDelete(id:string){

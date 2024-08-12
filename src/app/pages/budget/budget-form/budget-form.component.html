@@ -1,40 +1,59 @@
-<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
-  <input type="hidden" name="Id" [value]="service.formData.Id" />
-  <div class="mb-3">
-    <label>Month</label>
-    <input type="date" class="form-control form-control-lg" placeholder="YYYY-MM-DD" #Month="ngModel" name="Month"
-      [(ngModel)]="service.formData.Month" required>
-  </div>
-  <div class="row">
-    <div class="mb-3">
-      <label>Total Budget</label>
-      <input class="form-control form-control-lg" placeholder="1000000$" #TotalBudget="ngModel" name="TotalBudget"
-        [(ngModel)]="service.formData.TotalBudget" required>
-    </div>
-    <div class="mb-3">
-      <label for="inputCategory">Category</label>
-      <select id="inputCategory" class="form-control form-control-lg" #Category="ngModel" name="Category"
-        [(ngModel)]="service.formData.Category" required>
-        <option *ngFor="let Category of categoryService.categories" [ngValue]="Category.Name">{{Category.Name}}</option>
-      </select>
-    </div>
-    <!-- <div  *ngFor="let pd of service.dictionary| keyvalue" >
-      <div class="mb-3">
-        <label for="newKey">Category</label>
-        <input type="text" class="form-control form-control-lg" #newKey="ngModel" [(ngModel)]="pd.key" name="newKey">
-      </div>
-      <div class="mb-3">
-        <label for="newValue">Amount</label>
-        <input type="text" class="form-control form-control-lg" #newValue="ngModel" [(ngModel)]="pd.value"
-          name="newValue">
-      </div>
-      <span class="text-secondary"><a class="fa-solid flex-grow-1 mouse-hover" (click)="addAllocation(form)"> Add more</a></span>
-    </div>-->
+<div class="bg-primary-subtle text-center py-5 rounded-2">
+  <h1 class="dispay-6 fw-bold">
+    Budget
+  </h1>
+</div>
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
 
-  </div>
-  <div class="d-grid">
-    <button class="btn btn-lg btn-success" type="submit">
-      Submit
-    </button>
-  </div>
-</form>
+    <div class="row">
+      <div class="col-3">
+        <label>Month</label>
+      </div>
+      <div class="col-3">
+        <input type="date" class="form-control" placeholder="YYYY-MM-DD" #Month="ngModel" name="Month"
+          [(ngModel)]="service.formData.Month" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <label>Total Budget</label>
+      </div>
+      <div class="col-3">
+          <input class="form-control" data-original="100.00" data-id="1" data-limit="14" value="100.00" #TotalBudget="ngModel" name="TotalBudget"
+          [(ngModel)]="service.formData.TotalBudget" requireautocomplete="off" min="0" type="number"> 
+          <div class="input-group-btn">
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <label>Category</label>
+      </div>
+      <div class="col-3">
+        <select id="inputCategory" class="form-select"  #Category="ngModel" name="Category"
+          [(ngModel)]="service.formData.Category" required>
+          <option *ngFor="let Category of categoryService.categories" [ngValue]="Category.Name">{{Category.Name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="!service.isUpdate">
+      <div class="col-sm-8">
+        <div class="checkbox"><label>
+            <input type="checkbox" [(ngModel)]="service.isReturnHereChecked" checked (click)="onclick()">
+            After creating, return here.
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <button class="btn btn-lg btn-info" type="submit">
+        <label *ngIf="service.isUpdate">Update</label>
+        <label *ngIf="!service.isUpdate">Create</label>
+      </button>
+    </div>
+  </form>
+</div>

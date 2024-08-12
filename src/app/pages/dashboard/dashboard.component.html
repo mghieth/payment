@@ -13,7 +13,7 @@
     </div>
     <div class="col">
       <label for="inputCategory">Category</label>
-      <select id="inputCategory" class="form-control form-control-lg" #Category="ngModel" name="category"
+      <select id="inputCategory" class="form-select form-select-lg" #Category="ngModel" name="category"
         [(ngModel)]="transactionService.Category.Name" required>
         <option *ngFor="let Category of categoryService.categories" [ngValue]="Category.Name">{{Category.Name}}</option>
       </select>

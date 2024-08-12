@@ -27,7 +27,7 @@
               <td>{{pd.RemainingAmount}}{{service.userService.newUser.Symbol}}</td>
               <td>{{pd.DueDate | date:"M/d/yyyy"}}</td>
               <td><span class="text-secondary">
-                <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
+                <i class="fa-regular fa-trash-can" (click)="onDelete(pd.Id)"></i>
               </span></td>
             </tr>
           </tbody>

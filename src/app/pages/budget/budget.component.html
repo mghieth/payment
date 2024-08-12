@@ -1,46 +1,42 @@
-<div class="bg-body-secondary text-center py-5 rounded-2">
-    <h1 class="dispay-6 fw-bold">
-       Budget
-    </h1>
+<div class="bg-primary-subtle	 text-center py-5 rounded-2">
+  <h1 class="dispay-6 fw-bold">
+    Budget
+  </h1>
+</div>
+<div class="row mt-3">
+  <div class="card mb-2">
+    <div class="card-header">
+      <a href="budget/createBudget" class="btn btn-success"><span class="fa fa-plus fa-fw"></span> New budget</a>
     </div>
-    <div class="row mt-3">
-        <div class="card mb-2">
-            <div class="card-header">
-              My Budget
-            </div>
-            <div class="card-body">
-              <table class="table table-hover">
-                <thead>
-                  <tr   >
-                    <th scope="col">Month</th>
-                    <th scope="col">Total Budget</th>
-                    <th scope="col">Category</th>
-                   <th scope="col">Remaining Amounts</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
-                    <td>{{pd.Month | date:"MMM"}}</td>
-                    <td>{{pd.TotalBudget}}</td>    
-                    <td>{{pd.Category}}</td>
-                    <td>{{pd.RemainingAmount}}</td>
-                   <!--  <td *ngFor="let item of pd.AllocatedAmounts | keyvalue">
-                      <ul class="list-group">
-                        <li class="list-group-item">
-                      Category: {{ item.key }}, Amounts: {{ item.value }}
-                    </li>
-                    </ul>
-                    </td>-->
-                    <td><span class="text-secondary">
-                      <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
-                    </span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-      
-          <div class="col-4">
-            <app-budget-form></app-budget-form>
-          </div>
-         </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Month</th>
+            <th scope="col">Total Budget</th>
+            <th scope="col">Category</th>
+            <th scope="col">Remaining Amounts</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pd of service.list">
+            <td>{{pd.Month | date:"MMM"}}</td>
+            <td>{{pd.TotalBudget}}</td>
+            <td>{{pd.Category}}</td>
+            <td>{{pd.RemainingAmount}}</td>
+            <td>
+              <div class="btn-group btn-group-xs">
+                <!--  <a href="#" class="handle object-handle btn btn-default ui-sortable-handle"><span class="fa fa-fw fa-bars"></span></a>-->
+                <a class="btn btn-xs btn-default" (click)="populateForm(pd)"><span
+                    class="fa fa-fw fa-pencil"></span></a>
+                <a class="btn btn-xs btn-default" (click)="onDelete(pd.Id)"><span
+                    class="fa-regular fa-trash-can"></span></a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

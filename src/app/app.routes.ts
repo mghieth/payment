@@ -11,6 +11,7 @@ import { InvestmentComponent } from './pages/investment/investment.component';
 import { DebtComponent } from './pages/debt/debt.component';
 import { UserRegisterFormComponent } from './pages/register/user-register-form.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { BudgetFormComponent } from './pages/budget/budget-form/budget-form.component';
 
 export const routes: Routes = [
     {
@@ -43,6 +44,11 @@ export const routes: Routes = [
             {
                 path:'budget',
                 component:BudgetComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path:'budget/createBudget',
+                component:BudgetFormComponent,
                 canActivate:[authGuard]
             },
             {
