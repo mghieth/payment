@@ -1,4 +1,4 @@
-<div class="bg-body-secondary text-center py-5 rounded-2">
+<div class="bg-primary-subtle text-center py-5 rounded-2">
     <h1 class="dispay-6 fw-bold">
        Saving Goals
     </h1>
@@ -6,12 +6,12 @@
     <div class="row mt-5">
         <div class="card mb-10">
             <div class="card-header">
-              My Goals
+              <a href="goal/create" class="btn btn-success"><span class="fa fa-plus fa-fw"></span> New Goal</a>
             </div>
             <div class="card-body">
               <table class="table table-hover">
                 <thead>
-                  <tr   >
+                  <tr>
                     <th scope="col">Goal Name</th>
                     <th scope="col">Target Amount</th>
                     <th scope="col">Current Amount</th>
@@ -21,7 +21,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
+                  <tr *ngFor="let pd of service.list">
                     <td>{{pd.GoalName}}</td>
                     <td>{{pd.TargetAmount}}{{service.userService.newUser.Symbol}}</td>
                     <td>{{pd.CurrentAmount}}{{service.userService.newUser.Symbol}}</td>
@@ -32,17 +32,18 @@
 
                     </div>
                     </td>
-                    <td><span class="text-secondary">
-                      <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
-                    </span></td>
+                    <td>
+                      <div class="btn-group btn-group-xs">
+                        <a class="btn btn-xs btn-default" (click)="populateForm(pd)"><span
+                            class="fa fa-fw fa-pencil"></span></a>
+                        <a class="btn btn-xs btn-default" (click)="onDelete(pd.Id)"><span
+                            class="fa-regular fa-trash-can"></span></a>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-          </div>
-      
-          <div class="col-4">
-            <app-saving-goal-form></app-saving-goal-form>
           </div>
          </div>
       

@@ -13,6 +13,9 @@ import { UserRegisterFormComponent } from './pages/register/user-register-form.c
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BudgetFormComponent } from './pages/budget/budget-form/budget-form.component';
 import { TransactionFormComponent } from './pages/transactions/transaction-form/transaction-form.component';
+import { SavingGoalFormComponent } from './pages/saving-goal/saving-goal-form/saving-goal-form.component';
+import { InvestmentFormComponent } from './pages/investment/investment-form/investment-form.component';
+import { DebtFormComponent } from './pages/debt/debt-form/debt-form.component';
 
 export const routes: Routes = [
     {
@@ -63,13 +66,28 @@ export const routes: Routes = [
                 canActivate:[authGuard]
             },
             {
+                path:'goal/create',
+                component:SavingGoalFormComponent,
+                canActivate:[authGuard]
+            },
+            {
                 path:'investment',
                 component:InvestmentComponent,
                 canActivate:[authGuard]
             },
             {
+                path:'investment/create',
+                component:InvestmentFormComponent,
+                canActivate:[authGuard]
+            },
+            {
                 path:'debt',
                 component:DebtComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path:'debt/create',
+                component:DebtFormComponent,
                 canActivate:[authGuard]
             },
             {

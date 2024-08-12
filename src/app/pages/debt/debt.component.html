@@ -1,42 +1,43 @@
-<div class="bg-body-secondary text-center py-5 rounded-2">
-    <h1 class="dispay-6 fw-bold">
-      Debt
-    </h1>
-  </div>
-  <div class="row mt-5">
-    <div class="card mb-4">
-      <div class="card-header">
-        My Debts
-      </div>
-      <div class="card-body">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Debt Type</th>
-              <th scope="col">Principal Amount</th>
-              <th scope="col">Interest Rate</th>
-              <th scope="col">Remaining Amount</th>
-              <th scope="col">Due Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let pd of service.list" (click)="populateForm(pd)">
-              <td>{{pd.DebtType}}</td>
-              <td>{{pd.PrincipalAmount}}{{service.userService.newUser.Symbol}}</td>
-              <td>{{pd.InterestRate}}</td>
-              <td>{{pd.RemainingAmount}}{{service.userService.newUser.Symbol}}</td>
-              <td>{{pd.DueDate | date:"M/d/yyyy"}}</td>
-              <td><span class="text-secondary">
-                <i class="fa-regular fa-trash-can" (click)="onDelete(pd.Id)"></i>
-              </span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="bg-primary-subtle text-center py-5 rounded-2">
+  <h1 class="dispay-6 fw-bold">
+    Debt
+  </h1>
+</div>
+<div class="row mt-5">
+  <div class="card mb-4">
+    <div class="card-header">
+      <a href="debt/create" class="btn btn-success"><span class="fa fa-plus fa-fw"></span> New debt</a>
     </div>
-  
-    <div class="col-4">
-      <app-debt-form></app-debt-form>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Debt Type</th>
+            <th scope="col">Principal Amount</th>
+            <th scope="col">Interest Rate</th>
+            <th scope="col">Remaining Amount</th>
+            <th scope="col">Due Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pd of service.list">
+            <td>{{pd.DebtType}}</td>
+            <td>{{pd.PrincipalAmount}}{{service.userService.newUser.Symbol}}</td>
+            <td>{{pd.InterestRate}}</td>
+            <td>{{pd.RemainingAmount}}{{service.userService.newUser.Symbol}}</td>
+            <td>{{pd.DueDate | date:"M/d/yyyy"}}</td>
+            <td>
+              <div class="btn-group btn-group-xs">
+                <a class="btn btn-xs btn-default" (click)="populateForm(pd)"><span
+                    class="fa fa-fw fa-pencil"></span></a>
+                <a class="btn btn-xs btn-default" (click)="onDelete(pd.Id)"><span
+                    class="fa-regular fa-trash-can"></span></a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  
+</div>

@@ -17,6 +17,8 @@ export class DebtService {
   formData:Debt = new Debt()
   formSubmitted:boolean = false;
   userId:any= localStorage.getItem("UserId")
+  isUpdate:boolean = false
+  isReturnHereChecked:boolean = true
 
   refreshList(){
     debugger;
