@@ -4,60 +4,66 @@
   </h1>
 </div>
 <div class="container">
-  <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
-    <div class="row">
-      <div class="col-3">
-        <label>Goal Name</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control" placeholder="ex: buy car" #Amount="ngModel" name="Amount"
-          [(ngModel)]="service.formData.GoalName" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Target Amount</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control" placeholder="10000$" #TargetAmount="ngModel" name="TargetAmount"
-          [(ngModel)]="service.formData.TargetAmount" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Current Amount</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control" placeholder="10000$" #CurrentAmount="ngModel" name="CurrentAmount"
-          [(ngModel)]="service.formData.CurrentAmount" required>
-        <span style="color: red;" [ngStyle]="{'visibility': showError ? 'visible' : 'hidden'}">The Current Amount should
-          be less than target amount</span>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Deadline</label>
-      </div>
-      <div class="col-3">
-        <input type="date" class="form-control" placeholder="YYYY-MM-DD" #Deadline="ngModel"
-          name="Deadline" [(ngModel)]="service.formData.Deadline" required>
-      </div>
-    </div>
-    <div class="form-group" *ngIf="!service.isUpdate">
-      <div class="col-sm-8">
-        <div class="checkbox"><label>
-            <input type="checkbox" [(ngModel)]="service.isReturnHereChecked" [ngModelOptions]="{standalone: true}"
-              checked (click)="onclick()">
-            After creating, return here.
-          </label>
+  <div class="row mt-5">
+    <div class="card mb-4">
+      <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate
+        autocomplete="on">
+        <div class="row">
+          <div class="col-3">
+            <label>Goal Name</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="ex: buy car" #Amount="ngModel" name="Amount"
+              [(ngModel)]="service.formData.GoalName" required>
+          </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Target Amount</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="10000$" #TargetAmount="ngModel" name="TargetAmount"
+              [(ngModel)]="service.formData.TargetAmount" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Current Amount</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="10000$" #CurrentAmount="ngModel" name="CurrentAmount"
+              [(ngModel)]="service.formData.CurrentAmount" required>
+            <span style="color: red;" [ngStyle]="{'visibility': showError ? 'visible' : 'hidden'}">The Current Amount
+              should
+              be less than target amount</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Deadline</label>
+          </div>
+          <div class="col-3">
+            <input type="date" class="form-control" placeholder="YYYY-MM-DD" #Deadline="ngModel" name="Deadline"
+              [(ngModel)]="service.formData.Deadline" required>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="!service.isUpdate">
+          <div class="col-sm-8">
+            <div class="checkbox"><label>
+                <input type="checkbox" [(ngModel)]="service.isReturnHereChecked" [ngModelOptions]="{standalone: true}"
+                  checked (click)="onclick()">
+                After creating, return here.
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-md btn-info" type="submit">
+            <label *ngIf="service.isUpdate">Update</label>
+            <label *ngIf="!service.isUpdate">Create</label>
+          </button>
+        </div>
+      </form>
     </div>
-    <div class="col-3">
-      <button class="btn btn-md btn-info" type="submit">
-        <label *ngIf="service.isUpdate">Update</label>
-        <label *ngIf="!service.isUpdate">Create</label>
-      </button>
-    </div>
-  </form>
+  </div>
 </div>

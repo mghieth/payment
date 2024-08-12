@@ -4,59 +4,64 @@
   </h1>
 </div>
 <div class="container">
-  <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="on">
+  <div class="row mt-5">
+    <div class="card mb-4">
+      <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate
+        autocomplete="on">
 
-    <div class="row">
-      <div class="col-3">
-        <label>Investment Type</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control" placeholder="e.g., stocks, bonds" #InvestmentType="ngModel"
-          name="InvestmentType" [(ngModel)]="service.formData.InvestmentType" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Amount Invested</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control" placeholder="10000$" #AmountInvested="ngModel" name="AmountInvested"
-          [(ngModel)]="service.formData.AmountInvested" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Current Value</label>
-      </div>
-      <div class="col-3">
-        <input class="form-control" placeholder="10000$" #CurrentValue="ngModel" name="CurrentValue"
-          [(ngModel)]="service.formData.CurrentValue">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label>Date Of Investment</label>
-      </div>
-      <div class="col-3">
-        <input type="date" class="form-control" placeholder="YYYY-MM-DD" #DateOfInvestment="ngModel"
-          name="DateOfInvestment" [(ngModel)]="service.formData.DateOfInvestment">
-      </div>
-    </div>
-    <div class="form-group" *ngIf="!service.isUpdate">
-      <div class="col-sm-8">
-        <div class="checkbox"><label>
-            <input type="checkbox" [(ngModel)]="service.isReturnHereChecked" [ngModelOptions]="{standalone: true}"
-              checked (click)="onclick()">
-            After creating, return here.
-          </label>
+        <div class="row">
+          <div class="col-3">
+            <label>Investment Type</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="e.g., stocks, bonds" #InvestmentType="ngModel"
+              name="InvestmentType" [(ngModel)]="service.formData.InvestmentType" required>
+          </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Amount Invested</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="10000$" #AmountInvested="ngModel" name="AmountInvested"
+              [(ngModel)]="service.formData.AmountInvested" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Current Value</label>
+          </div>
+          <div class="col-3">
+            <input class="form-control" placeholder="10000$" #CurrentValue="ngModel" name="CurrentValue"
+              [(ngModel)]="service.formData.CurrentValue">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label>Date Of Investment</label>
+          </div>
+          <div class="col-3">
+            <input type="date" class="form-control" placeholder="YYYY-MM-DD" #DateOfInvestment="ngModel"
+              name="DateOfInvestment" [(ngModel)]="service.formData.DateOfInvestment">
+          </div>
+        </div>
+        <div class="form-group" *ngIf="!service.isUpdate">
+          <div class="col-sm-8">
+            <div class="checkbox"><label>
+                <input type="checkbox" [(ngModel)]="service.isReturnHereChecked" [ngModelOptions]="{standalone: true}"
+                  checked (click)="onclick()">
+                After creating, return here.
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-md btn-info" type="submit">
+            <label *ngIf="service.isUpdate">Update</label>
+            <label *ngIf="!service.isUpdate">Create</label>
+          </button>
+        </div>
+      </form>
     </div>
-    <div class="col-3">
-      <button class="btn btn-md btn-info" type="submit">
-        <label *ngIf="service.isUpdate">Update</label>
-        <label *ngIf="!service.isUpdate">Create</label>
-      </button>
-    </div>
-  </form>
+  </div>
 </div>
