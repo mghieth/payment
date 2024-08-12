@@ -12,6 +12,7 @@ import { DebtComponent } from './pages/debt/debt.component';
 import { UserRegisterFormComponent } from './pages/register/user-register-form.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BudgetFormComponent } from './pages/budget/budget-form/budget-form.component';
+import { TransactionFormComponent } from './pages/transactions/transaction-form/transaction-form.component';
 
 export const routes: Routes = [
     {
@@ -42,12 +43,17 @@ export const routes: Routes = [
                 canActivate:[authGuard]
             },
             {
+                path:'transaction/create',
+                component:TransactionFormComponent,
+                canActivate:[authGuard]
+            },
+            {
                 path:'budget',
                 component:BudgetComponent,
                 canActivate:[authGuard]
             },
             {
-                path:'budget/createBudget',
+                path:'budget/create',
                 component:BudgetFormComponent,
                 canActivate:[authGuard]
             },

@@ -26,6 +26,8 @@ export class TransactionService {
   fromDate:Date =new Date
   toDate:Date = new Date
   Category= new Category()
+  isUpdate:boolean = false
+  isReturnHereChecked:boolean = true
 
   refreshList() {
     this.http.get(this.url + '?userId=' + this.userId).subscribe({

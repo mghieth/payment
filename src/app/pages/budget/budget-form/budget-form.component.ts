@@ -3,7 +3,7 @@ import { BudgetService } from '../../../services/budget/budget.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Budget } from '../../../Models/budget.model';
-import { NgFor, KeyValuePipe, CommonModule } from '@angular/common';
+import { NgFor, CommonModule } from '@angular/common';
 import { CategoryService } from '../../../services/category/category.service';
 import { Category } from '../../../Models/transaction.model';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'app-budget-form',
   standalone: true,
-  imports: [FormsModule, NgFor, KeyValuePipe, CommonModule,FontAwesomeModule],
+  imports: [FormsModule, NgFor, CommonModule,FontAwesomeModule],
   templateUrl: './budget-form.component.html',
   styleUrl: './budget-form.component.css',
 })

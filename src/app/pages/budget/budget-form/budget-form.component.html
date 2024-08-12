@@ -43,14 +43,14 @@
     <div class="form-group" *ngIf="!service.isUpdate">
       <div class="col-sm-8">
         <div class="checkbox"><label>
-            <input type="checkbox" [(ngModel)]="service.isReturnHereChecked" checked (click)="onclick()">
+            <input type="checkbox" [(ngModel)]="service.isReturnHereChecked" [ngModelOptions]="{standalone: true}" checked (click)="onclick()">
             After creating, return here.
           </label>
         </div>
       </div>
     </div>
     <div class="col-3">
-      <button class="btn btn-lg btn-info" type="submit">
+      <button class="btn btn-md btn-info" type="submit">
         <label *ngIf="service.isUpdate">Update</label>
         <label *ngIf="!service.isUpdate">Create</label>
       </button>

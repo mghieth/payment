@@ -2,10 +2,9 @@ import { Component,OnInit,inject } from '@angular/core';
 import { TransactionFormComponent } from "./transaction-form/transaction-form.component";
 import { ToastrService } from 'ngx-toastr';
 import { Transaction } from '../../Models/transaction.model';
-import {HttpClient} from "@angular/common/http";
 import{CommonModule, NgFor, NgStyle} from '@angular/common';
 import { TransactionService } from '../../services/transaction/transaction.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transactions',
@@ -17,8 +16,8 @@ import { TransactionService } from '../../services/transaction/transaction.servi
 
 export class TransactionsComponent implements OnInit{
   toastr= inject(ToastrService)
-  http= inject(HttpClient)
   service=inject(TransactionService)
+  router = inject(Router);
 
   ngOnInit():void{
     this.service.refreshList();
@@ -31,6 +30,8 @@ export class TransactionsComponent implements OnInit{
     if(this.service.formData.Type == 'Income')
       this.service.isIncome=true
     else this.service.isIncome=false
+    this.router.navigateByUrl('transaction/create');
+    this.service.isUpdate= true
   }
 
   onDelete(id:string){

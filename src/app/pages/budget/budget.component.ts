@@ -29,7 +29,7 @@ export class BudgetComponent implements OnInit {
     this.service.formData = Object.assign({},selectedRecord) 
     let tempDate = new Date(this.service.formData.Month ?? new Date);
     this.service.formData.Month=this.service.userService.getDate(tempDate)
-    this.router.navigateByUrl('budget/createBudget');
+    this.router.navigateByUrl('budget/create');
     this.service.isUpdate= true
   }
 

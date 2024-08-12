@@ -1,35 +1,12 @@
-<div class="bg-body-secondary text-center py-5 rounded-2">
+<div class="bg-primary-subtle text-center py-5 rounded-2">
    <h1 class="dispay-6 fw-bold">
       Income and Expense Tracking
    </h1>
    </div>
    <div class="row mt-5">
-       
-       <!--<div class="col-6">
-          <ul class="list-group">
-           <li class="list-group-item d-flex justify-content-between align-items-start mb-2 border px-4 py-3 rounded-3"
-            *ngFor="let pd of service.list">
-            <div class="flex-grow-1 mouse-hover" (click)="populateForm(pd)">
-   
-            <div class="fw-bold">
-               {{pd.Amount}}
-            </div>
-            <div>{{pd.Date}}</div>
-            <div class="fw-bold">
-               {{pd.Description}}
-            </div>
-            <div>{{pd.Category}}</div>
-           </div>
-            <span class="text-secondary">
-               <i class="fa-solid fa-trash-can fa-lg mouse-hover" (click)="onDelete(pd.Id)">Delete </i>
-           </span>
-           </li>
-          </ul>
-       </div>-->
-
    <div class="card mb-4">
       <div class="card-header">
-        Recent Transactions
+        <a href="transaction/create" class="btn btn-success"><span class="fa fa-plus fa-fw"></span> New transaction</a>
       </div>
       <div class="card-body">
         <table class="table table-hover">
@@ -46,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let pd of service.list" (click)="populateForm(pd)" [ngStyle]="{'--bs-table-color': pd.Type === 'Expense' ? 'red' : '#0ae50a'}" >
+            <tr *ngFor="let pd of service.list" [ngStyle]="{'--bs-table-color': pd.Type === 'Expense' ? 'red' : '#0ae50a'}" >
               <td>{{pd.Type}}</td>
               <td>{{pd.Amount}}{{service.userService.newUser.Symbol}}</td>
               <td>{{pd.Category}}</td>
@@ -54,18 +31,17 @@
               <td>{{pd.PaymentMethod}}</td>
               <td>{{pd.Source}}</td>
               <td>{{pd.Description}}</td>
-              <td><span class="text-secondary">
-                <button type="button" class="btn btn-danger" (click)="onDelete(pd.Id)">Delete</button>
-              </span></td>
-              
+              <td>
+                <div class="btn-group btn-group-xs">
+                  <a class="btn btn-xs btn-default" (click)="populateForm(pd)"><span
+                      class="fa fa-fw fa-pencil"></span></a>
+                  <a class="btn btn-xs btn-default" (click)="onDelete(pd.Id)"><span
+                      class="fa-regular fa-trash-can"></span></a>
+                </div>
+              </td>
             </tr>
-            <!-- Add more transactions as needed -->
           </tbody>
         </table>
       </div>
-    </div>
-
-    <div class="col-4">
-      <app-transaction-form></app-transaction-form>
     </div>
    </div>
