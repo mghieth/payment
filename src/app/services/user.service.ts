@@ -25,6 +25,9 @@ export class UserService {
     Email: '',
     Password: '',
   };
+  oldPassword: string = '';
+  newPassword: string = '';
+  confirmNewPassword: string = '';
 
   currentCurrency = new Currency();
 
@@ -33,9 +36,7 @@ export class UserService {
   }
 
   onLogin() {
-    debugger;
     this.http.post(this.url + '/login', this.loginObj).subscribe((res: any) => {
-      debugger;
       if (res.Result) {
         alert('login success');
         localStorage.setItem('LoginToken', res.Token);
@@ -81,8 +82,12 @@ export class UserService {
 
   UpdateUser() {
     this.newUser.CurrencyName = this.currentCurrency.name;
-    this.newUser.CurrencyCode = this.currentCurrency.cc;
-    this.newUser.Symbol = this.currentCurrency.symbol;
+    if (this.currentCurrency.cc != '') {
+      this.newUser.CurrencyCode = this.currentCurrency.cc;
+    }
+    if (this.currentCurrency.symbol != '') {
+      this.newUser.Symbol = this.currentCurrency.symbol;
+    }
 
     return this.http.put(this.url + '/' + this.userId, this.newUser);
   }

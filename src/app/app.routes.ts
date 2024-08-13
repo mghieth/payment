@@ -16,6 +16,7 @@ import { TransactionFormComponent } from './pages/transactions/transaction-form/
 import { SavingGoalFormComponent } from './pages/saving-goal/saving-goal-form/saving-goal-form.component';
 import { InvestmentFormComponent } from './pages/investment/investment-form/investment-form.component';
 import { DebtFormComponent } from './pages/debt/debt-form/debt-form.component';
+import { ResetPasswordComponent } from './pages/setting/reset-password/reset-password.component';
 
 export const routes: Routes = [
     {
@@ -98,6 +99,11 @@ export const routes: Routes = [
             {
                 path:'setting',
                 component:SettingComponent,
+                canActivate:[authGuard]
+            },
+            {
+                path:'resetPassword',
+                component:ResetPasswordComponent,
                 canActivate:[authGuard]
             }
         ]

@@ -27,18 +27,14 @@ export class CurrencyComponent implements OnInit {
     
     ngOnInit(): void {
       this.userService.getUser()
-      debugger
     }
 
     updateCurrency(){
-      debugger
       this.userService.UpdateUser().subscribe({
         next:(res:any) => {
           this.toastr.info('Updated successfully', 'Currency')
         },
         error:(err: any) => {console.log(err)}
       })
-
-
     }
 }
