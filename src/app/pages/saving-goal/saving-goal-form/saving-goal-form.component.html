@@ -57,11 +57,18 @@
             </div>
           </div>
         </div>
-        <div class="col-3">
-          <button class="btn btn-md btn-info" type="submit">
-            <label *ngIf="service.isUpdate">Update</label>
-            <label *ngIf="!service.isUpdate">Create</label>
-          </button>
+        <div class="row">
+          <div class="col-3">
+            <a class="btn btn-md btn-warning" href="/goal">
+              <label>Discard</label>
+            </a>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-md btn-info" type="submit">
+              <label *ngIf="service.isUpdate">Update</label>
+              <label *ngIf="!service.isUpdate">Create</label>
+            </button>
+          </div>
         </div>
       </form>
     </div>

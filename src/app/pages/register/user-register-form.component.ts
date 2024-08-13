@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UserService } from '../../services/user.service';
@@ -10,8 +10,14 @@ import { UserService } from '../../services/user.service';
   templateUrl: './user-register-form.component.html',
   styleUrl: './user-register-form.component.css'
 })
-export class UserRegisterFormComponent {
+export class UserRegisterFormComponent implements OnInit{
   service=inject(UserService)
+
+  ngOnInit(): void {
+    let date=new Date()
+    date.setFullYear(date.getFullYear()-15)
+    this.service.newUser.DateOfBirth= this.service.getDate(date);
+  }
 
   onRegister(form:NgForm){
     this.service.onRegister(form)

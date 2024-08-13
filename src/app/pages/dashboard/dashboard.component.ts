@@ -1,5 +1,5 @@
 import { CategoryService } from './../../services/category/category.service';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Component, inject, OnInit } from '@angular/core';
 import { TransactionService } from '../../services/transaction/transaction.service';
 import { CommonModule, NgFor, NgStyle } from '@angular/common';

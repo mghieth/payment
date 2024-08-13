@@ -16,9 +16,9 @@
           <td title="Cilck here to Update">{{pd.Name}}</td>
           <td>
             <div class="btn-group btn-group-xs">
-              <a class="btn btn-xs btn-default" [ngStyle]="{'visibility': pd.UserId ==null ? 'hidden' : 'visible'}"
+              <a class="btn btn-xs btn-default" 
                 (click)="populateForm(pd)"><span class="fa fa-fw fa-pencil"></span></a>
-              <a class="btn btn-xs btn-default" [ngStyle]="{'visibility': pd.UserId ==null ? 'hidden' : 'visible'}"
+              <a class="btn btn-xs btn-default" 
                 (click)="onDelete(pd.Id)"><span class="fa-regular fa-trash-can"></span></a>
             </div>
           </td>

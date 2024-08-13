@@ -12,32 +12,34 @@
             </div>
           </div>
           <h5 class="my-4 d-flex justify-content-center">Sign in with Email address</h5>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" [(ngModel)]="service.loginObj.Email"
-              value="mal@demo" />
+          <div class="d-flex justify-content-center">
+            <form class="register-form" #form="ngForm">
+              <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" #Email="ngModel" name="Email" [(ngModel)]="service.loginObj.Email"/>
             <label for="floatingInput">Email Address</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" value="12345"
-              [(ngModel)]="service.loginObj.Password" />
+            <input type="password" class="form-control" id="password" #password="ngModel" name="password" [(ngModel)]="service.loginObj.Password" />
             <label for="password">Password</label>
           </div>
           <div class="d-flex mt-1 justify-content-between">
             <div class="form-check">
-              <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="" />
+              <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked=""/>
               <label class="form-check-label text-muted" for="customCheckc1">Remember me</label>
             </div>
-            <h6 class="text-secondary">
+          <!-- <h6 class="text-secondary">
               <a href="javascript:">Forgot Password?</a>
-            </h6>
+            </h6>-->
           </div>
           <div class="d-grid mt-4">
-            <button type="button" class="btn btn-info" (click)="onLogin()">Sign In</button>
+            <button type="button" class="btn btn-info" (click)="onLogin(form)">Sign In</button>
           </div>
           <hr />
           <h5 class="d-flex justify-content-center">
-            <a [routerLink]="['/register']">Don't have an account?</a>
+            <a href="/register">Don't have an account?</a>
           </h5>
+        </form>
+        </div>
         </div>
       </div>
     </div>

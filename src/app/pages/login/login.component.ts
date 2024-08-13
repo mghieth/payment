@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,NgForm } from '@angular/forms';
 import{NgIf} from '@angular/common';
-import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { RouterModule } from '@angular/router';
 
@@ -26,12 +25,8 @@ toggleForms() {
   this.isLoginFormVisible = !this.isLoginFormVisible;
 }
 
-onLogin(){
-  this.service.onLogin()
-}
-
-onRegister(form:NgForm){
-  this.service.onRegister(form)
+onLogin(form:NgForm){
+  this.service.onLogin(form)
 }
 
 }

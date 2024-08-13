@@ -1,4 +1,4 @@
-<div class="auth-main"  id="register-form">
+<div class="auth-main" id="register-form">
   <div class="auth-wrapper v3">
     <div class="auth-form">
       <div class="card mt-5">
@@ -12,38 +12,41 @@
             </div>
           </div>
           <h5 class="my-4 d-flex justify-content-center">Sign Up with Email address</h5>
-          <div class="row">
-            <div class="col-md-6">
+          <div class="d-flex justify-content-center">
+            <form class="register-form" #form="ngForm">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" #userName="ngModel" name="name" [(ngModel)]="service.newUser.Name" placeholder="Jhon" />
-                <label for="floatingInput">Name</label>
+                <input type="text" class="form-control" id="floatingInput" #userName="ngModel" name="name"
+                  [(ngModel)]="service.newUser.Name" placeholder="Jhon" />
+                <label for="floatingInput">Full Name</label>
               </div>
-            </div>
-          </div>
-          <form class="register-form" #form="ngForm">
 
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" #password="ngModel" name="password" [(ngModel)]="service.newUser.Password" placeholder="****" />
-            <label for="floatingInput">Password</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" #email="ngModel" name="email" [(ngModel)]="service.newUser.Email" placeholder="name@example.com" />
-            <label for="floatingInput">Email Address / Username</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingInput" name="DateOfBirth" [(ngModel)]="service.newUser.DateOfBirth" placeholder="YYYY-MM-DD"/>
-            <label for="floatingInput">Birthday</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="phone" [(ngModel)]="service.newUser.PhoneNumber" placeholder="phone number"/>
-            <label for="floatingInput">Phone Number</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="address" [(ngModel)]="service.newUser.Address" placeholder="address"  />
-            <label for="floatingInput">Address</label>
-          </div>
-          
-          <div class="form-check mt-3s">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" #password="ngModel" name="password"
+                  [(ngModel)]="service.newUser.Password" placeholder="****" />
+                <label for="floatingInput">Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" #email="ngModel" name="email"
+                  [(ngModel)]="service.newUser.Email" placeholder="name@example.com" />
+                <label for="floatingInput">Email Address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="floatingInput" name="DateOfBirth"
+                  [(ngModel)]="service.newUser.DateOfBirth" placeholder="YYYY-MM-DD" />
+                <label for="floatingInput">Birthday</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" name="phone"
+                  [(ngModel)]="service.newUser.PhoneNumber" placeholder="phone number" />
+                <label for="floatingInput">Phone Number</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" name="address"
+                  [(ngModel)]="service.newUser.Address" placeholder="address" />
+                <label for="floatingInput">Address</label>
+              </div>
+
+              <!-- <div class="form-check mt-3s">
             <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="" />
             <label class="form-check-label" for="customCheckc1">
               <h6>
@@ -51,15 +54,16 @@
                 <span>Terms & Condition.</span>
               </h6>
             </label>
+          </div>-->
+              <div class="d-grid mt-4">
+                <button type="button" class="btn btn-info p-2" (click)="onRegister(form)">Sign Up</button>
+              </div>
+              <hr />
+              <h5 class="d-flex justify-content-center">
+                <a [routerLink]="['/login']">Already have an account?</a>
+              </h5>
+            </form>
           </div>
-          <div class="d-grid mt-4">
-            <button type="button" class="btn btn-info p-2" (click)="onRegister(form)">Sign Up</button>
-          </div>
-          <hr />
-          <h5 class="d-flex justify-content-center">
-            <a [routerLink]="['/login']">Already have an account?</a>
-          </h5>
-          </form>
         </div>
       </div>
     </div>

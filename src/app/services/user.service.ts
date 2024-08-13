@@ -35,27 +35,36 @@ export class UserService {
     this.userId;
   }
 
-  onLogin() {
-    this.http.post(this.url + '/login', this.loginObj).subscribe((res: any) => {
-      if (res.Result) {
-        alert('login success');
-        localStorage.setItem('LoginToken', res.Token);
-        localStorage.setItem('UserId', res.UserId);
-        this.router.navigateByUrl('dashboard');
-      } else {
-        alert('Check email or password');
-      }
-    });
+  onLogin(form: NgForm) {
+    debugger
+    if (form.valid) {
+      this.http
+        .post(this.url + '/login', this.loginObj)
+        .subscribe((res: any) => {
+          if (res.Result) {
+            alert('login success');
+            localStorage.setItem('LoginToken', res.Token);
+            localStorage.setItem('UserId', res.UserId);
+            this.router.navigateByUrl('dashboard');
+          } else {
+            alert('Check email or password');
+          }
+        });
+    }
   }
 
   onRegister(form: NgForm) {
     if (form.valid) {
       this.http.post(this.url, this.newUser).subscribe({
         next: (res: any) => {
-          this.toastr.success('Register successfully', 'user');
-          localStorage.setItem('LoginToken', res.Token);
-          localStorage.setItem('UserId', res.UserId);
-          this.router.navigateByUrl('dashboard');
+          if (res.EmailAlreadyExist) {
+            alert('This email already registered');
+          } else {
+            this.toastr.success('Register successfully', 'user');
+            localStorage.setItem('LoginToken', res.Token);
+            localStorage.setItem('UserId', res.UserId);
+            this.router.navigateByUrl('dashboard');
+          }
         },
         error: (err: any) => {
           console.log(err);
@@ -65,7 +74,7 @@ export class UserService {
   }
 
   getUser() {
-    this.http.get(this.url + '?id=' + this.userId).subscribe({
+    this.http.get(this.url + '/' + this.userId).subscribe({
       next: (res: any) => {
         this.newUser = res as User;
         this.userName = this.newUser.Name;
